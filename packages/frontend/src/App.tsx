@@ -1,4 +1,7 @@
 import React from "react";
+import "@rainbow-me/rainbowkit/styles.css";
+import { apiProvider, configureChains, getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { chain, createClient, WagmiProvider } from "wagmi";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Layout } from "./components/Layout";
 import { Main } from "./pages/Main";
@@ -32,14 +35,35 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  chains,
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Layout>
-        <Main />
-      </Layout>
-    </ThemeProvider>
+    <WagmiProvider client={wagmiClient}>
+      <RainbowKitProvider chains={chains}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Layout>
+            <Main />
+          </Layout>
+        </ThemeProvider>
+      </RainbowKitProvider>
+    </WagmiProvider>
   );
 }
 
