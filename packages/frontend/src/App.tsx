@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import { configureChains, chain, createClient, WagmiConfig } from "wagmi";
+import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { Layout } from "./components/Layout";
-import { Main } from "./pages/Main";
+import Main from "./pages/Main";
 
 const theme = {
   position: {
@@ -39,23 +38,19 @@ const GlobalStyle = createGlobalStyle`
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "poster-with-purpose-ethglobal",
-  chains,
+  appName: "poster-with-purpose",
+  chains
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider,
+  provider
 });
-
 
 function App() {
   return (
@@ -63,9 +58,7 @@ function App() {
       <RainbowKitProvider chains={chains}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Layout>
-            <Main />
-          </Layout>
+          <Main />
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>
