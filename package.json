@@ -7,8 +7,5 @@
             "packages/*"
         ]
     },
-    "repository": "git@github.com:**/**.git",
-    "dependencies": {
-        "wagmi": "^0.6.0"
-    }
+    "repository": "git@github.com:Hacking-Web3/poster-with-purpose.git"
 }
