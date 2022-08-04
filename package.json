@@ -3,9 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "workspaces": {
-      "packages": [
-        "packages/*"
-      ]
+        "packages": [
+            "packages/*"
+        ]
     },
-    "repository": "git@github.com:**/**.git"
-  }
+    "repository": "git@github.com:**/**.git",
+    "dependencies": {
+        "wagmi": "^0.6.0"
+    }
+}
