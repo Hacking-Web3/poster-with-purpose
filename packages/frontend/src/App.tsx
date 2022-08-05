@@ -1,39 +1,21 @@
 import React from 'react';
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import "./App.css"
+import { getDefaultWallets, darkTheme, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { Routes, Route } from 'react-router-dom';
 import Main from "./pages/Main";
+import Poster from "./pages/Poster";
+import Layout from "./components/Layout";
 
 const theme = {
-  position: {
-    bg: "#2C2E32",
-    inactiveTabBg: "#1F2124",
-    tabs: {
-      inactive: {
-        bg: "#1F2124",
-        color: "#42454A",
-      },
-    },
-  },
-  button: {
-    bg: "#06C799",
-    color: "#000",
-  },
+
 };
 
 const GlobalStyle = createGlobalStyle`
-  body {
-     font-family: serif;
-     background: #000;
-     color: #99A0AB;
-     font-family: 'Satoshi', sans-serif;
-  }
-  header {
-    color: white;
-  }
 `;
 
 const { chains, provider } = configureChains(
@@ -55,10 +37,23 @@ const wagmiClient = createClient({
 function App() {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider
+        chains={chains}
+        theme={darkTheme({
+          accentColor: "#e9fbe6",
+          accentColorForeground: "black",
+          borderRadius: "large",
+          fontStack: "system",
+        })}
+      >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Main />
+          <Layout>
+            <Routes>
+              <Route path='/' element={<Main />} />
+              <Route path='/poster/:id' element={<Poster />} />
+            </Routes>
+          </Layout>
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>
