@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -22,11 +21,6 @@ const Title = styled.h1`
   font-size: 28px;
   text-align: center;
   margin-bottom: 50px;
-`;
-
-const Image = styled.img`
-  object-fit: cover;
-  width: 80%;
 `;
 
 const CustomSlider = styled(Slider)`
@@ -174,7 +168,6 @@ const NewestPosters = [
 ];
 
 const NewPosters = () => {
-  let navigate = useNavigate();
   const settings = {
     dots: false,
     infinite: true,
@@ -191,7 +184,7 @@ const NewPosters = () => {
       <CustomSlider {...settings}>
         {NewestPosters.map((poster, index) => {
           return (
-            <CardNewPoster index={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
+            <CardNewPoster key={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
         })}
       </CustomSlider>

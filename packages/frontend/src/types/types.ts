@@ -1,8 +1,7 @@
 export interface IPosterCard {
-    index: number;
-    author: string;
-    title: string;
-    description: string;
+    author?: string;
+    title?: string;
+    description?: string;
     image: string;
-    tags: string[];
+    tags?: string[];
 }

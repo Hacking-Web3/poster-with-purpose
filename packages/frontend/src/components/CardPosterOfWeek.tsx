@@ -56,7 +56,7 @@ const Button = styled.button`
   text-align: center;
   :hover {
     background: #4A6346;
-    color: #DEF3DA;
+    color: #FFFFFF;
   }
 `;
 
@@ -90,11 +90,11 @@ const Tag = styled.button`
   }
 `;
 
-const CardPosterOfWeek = ({ index, author, title, description, image, tags }: IPosterCard) => {
+const CardPosterOfWeek = ({ author, title, description, image, tags }: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
-    <PosterCardContainer key={index} onClick={() => navigate("/poster")}>
+    <PosterCardContainer onClick={() => navigate("/poster")}>
       <Image src={image} alt="Head" />
       <Title><span style={{fontWeight: "bold"}}>{author}</span>, {title}</Title>
       <Description>{description}</Description>
@@ -103,7 +103,7 @@ const CardPosterOfWeek = ({ index, author, title, description, image, tags }: IP
         <Button style={{ marginLeft: "10px" }}>Support author</Button>
       </ButtonContainer>
       <TagsContainer>
-        {tags.map((tag, index) => (
+        {tags?.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
         ))}
       </TagsContainer>

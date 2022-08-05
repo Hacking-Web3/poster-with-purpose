@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
-const StyledFooter = styled.div`
+const FooterContent = styled.div`
   background: #f2fcff;;
   width: 100%;
   height: 25vh;
-  bottom: 0;
-`;
-
-const FooterContent = styled.div`
   display: flex;
-  max-width: 1272px;
-  margin: 0 auto;
+  flex-direction: row;
   justify-content: space-between;
-  margin-top: 25px;
+  padding: 50px;
+  bottom: 0;
 `;
 
 const BlackText = styled.span`
@@ -43,18 +39,16 @@ const Link = styled.a`
 
 const Footer = () => {
   return (
-    <StyledFooter>
-      <FooterContent>
-        <FooterContainer>
-          <FooterItem><Link href="">GitHub Link</Link></FooterItem>
-          <FooterItem><Link href="">Privacy Policy</Link></FooterItem>
-        </FooterContainer>
-        <FooterContainer>
-          <FooterItem><BlackText>2022</BlackText></FooterItem>
-          <FooterItem><img src="" alt="logo" /></FooterItem>
-        </FooterContainer>
-      </FooterContent>
-    </StyledFooter>
+    <FooterContent>
+      <FooterContainer>
+        <FooterItem><Link href="">GitHub Link</Link></FooterItem>
+        <FooterItem><Link href="">Privacy Policy</Link></FooterItem>
+      </FooterContainer>
+      <FooterContainer>
+        <FooterItem><BlackText>2022</BlackText></FooterItem>
+        <FooterItem><img src="logo.png" alt="logo" /></FooterItem>
+      </FooterContainer>
+    </FooterContent>
   );
 };
 
