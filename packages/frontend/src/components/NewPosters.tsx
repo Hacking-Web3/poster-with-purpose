@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CardNewPoster from "./CardNewPoster";
 
 const NewPosterContainer = styled.div`
   width: 100%;
@@ -12,12 +13,12 @@ const NewPosterContainer = styled.div`
   align-items: center;
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #fdf8ff;
+  background-color: rgba(217, 117, 244, 0.05);
 `;
 
 const Title = styled.h1`
   color: black;
-  font-weight: bold;
+  font-weight: medium;
   font-size: 28px;
   text-align: center;
   margin-bottom: 50px;
@@ -43,38 +44,134 @@ const CustomSlider = styled(Slider)`
   }
 `
 
-const TopPosters = [
+const NewestPosters = [
   {
-    title: "1"
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster1.png"
   },
   {
-    title: "2"
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice"],
+    image: "assets/poster2.png"
   },
   {
-    title: "3"
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation"],
+    image: "assets/poster3.png"
   },
   {
-    title: "4"
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Unity"],
+    image: "assets/poster4.png"
   },
   {
-    title: "5"
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["Disinformation", "Change", "Unity"],
+    image: "assets/poster5.png"
   },
   {
-    title: "6"
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster6.png"
   },
   {
-    title: "7"
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster1.png"
   },
   {
-    title: "8"
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice"],
+    image: "assets/poster2.png"
   },
   {
-    title: "9"
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation"],
+    image: "assets/poster3.png"
   },
   {
-    title: "10"
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Unity"],
+    image: "assets/poster4.png"
   },
-]
+  {
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["Disinformation", "Change", "Unity"],
+    image: "assets/poster5.png"
+  },
+  {
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster6.png"
+  },
+  {
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster1.png"
+  },
+  {
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice"],
+    image: "assets/poster2.png"
+  },
+  {
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation"],
+    image: "assets/poster3.png"
+  },
+  {
+    author: "Elvis Moss",
+    title: "Era of Disinformation",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Unity"],
+    image: "assets/poster4.png"
+  },
+  {
+    author: "Alexander Rybin",
+    title: "Unity and Peace",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["Disinformation", "Change", "Unity"],
+    image: "assets/poster5.png"
+  },
+  {
+    author: "Anna Apple",
+    title: "Era of Disinformation in the new wild world",
+    description: "2022, Spain / 423 u. printed in last 30 days",
+    tags: ["World Justice", "Disinformation", "Change", "Unity"],
+    image: "assets/poster6.png"
+  }
+];
 
 const NewPosters = () => {
   let navigate = useNavigate();
@@ -90,16 +187,11 @@ const NewPosters = () => {
 
   return (
     <NewPosterContainer>
-      <Title>New posters</Title>
+      <Title>Newest posters</Title>
       <CustomSlider {...settings}>
-        {TopPosters.map((poster, index) => {
+        {NewestPosters.map((poster, index) => {
           return (
-            <div key={index} onClick={() => navigate("/poster")}>
-              <Image src="tmp_poster1.png" alt="Head" />
-              <p>Title</p>
-              <p>Description</p>
-              <p>tags</p>
-            </div>
+            <CardNewPoster index={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
         })}
       </CustomSlider>
