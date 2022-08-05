@@ -10,12 +10,18 @@ import { Routes, Route } from 'react-router-dom';
 import Main from "./pages/Main";
 import Poster from "./pages/Poster";
 import Layout from "./components/Layout";
+import SatoshiRegular from "./assets/fonts/Satoshi-Regular.otf";
 
 const theme = {
-
 };
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: Satoshi-Regular;
+    font-style: normal;
+    font-weight: 400;
+    src: url(${SatoshiRegular});
+  }
 `;
 
 const { chains, provider } = configureChains(
