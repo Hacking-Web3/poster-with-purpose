@@ -56,16 +56,16 @@ const Button = styled.button`
   margin-bottom: 10px;
   :hover {
     background: #4A6346;
-    color: #DEF3DA;
+    color: #FFFFFF;
   } 
 `;
 
 
-const CardNewPoster = ({ index, author, title, description, image, tags }: IPosterCard) => {
+const CardNewPoster = ({ author, image }: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
-    <PosterCardContainer key={index} onClick={() => navigate("/poster")}>
+    <PosterCardContainer onClick={() => navigate("/poster")}>
       <Image src={image} alt="Head" />
       <Author>{author}</Author>
       <TimeStamp>A day ago</TimeStamp>

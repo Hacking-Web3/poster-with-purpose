@@ -41,7 +41,7 @@ const Button = styled.button`
   border-radius: 30px;
   padding: 0.75% 4%;
   :hover {
-    background-color: #AFCAAC;
+    background: #4A6346;
     color: #FFFFFF;
   }
 `;
@@ -101,7 +101,7 @@ const ImportantPosters = () => {
       <PosterContainer>
         {TopPosters.map((poster, index) => {
           return (
-            <CardPosterOfWeek index={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
+            <CardPosterOfWeek key={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
         })}
       </PosterContainer>

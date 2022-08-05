@@ -6,23 +6,20 @@ import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { Routes, Route } from 'react-router-dom';
-import Main from "./pages/Main";
-import Poster from "./pages/Poster";
-import Layout from "./components/Layout";
-import SatoshiRegular from "./assets/fonts/Satoshi-Regular.otf";
+import routes from './routes';
+import { useRoutes } from 'react-router-dom';
 
-const theme = {
-};
+import SatoshiRegular from "./assets/fonts/Satoshi-Regular.otf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: Satoshi-Regular;
-    font-style: normal;
-    font-weight: 400;
-    src: url(${SatoshiRegular});
-  }
+    src: url("./assets/fonts/Satoshi-Regular.otf");
+  },
 `;
+
+const theme = {
+};
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -41,6 +38,8 @@ const wagmiClient = createClient({
 });
 
 function App() {
+  const routing = useRoutes(routes);
+
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
@@ -54,12 +53,7 @@ function App() {
       >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Layout>
-            <Routes>
-              <Route path='/' element={<Main />} />
-              <Route path='/poster/:id' element={<Poster />} />
-            </Routes>
-          </Layout>
+            {routing}
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>

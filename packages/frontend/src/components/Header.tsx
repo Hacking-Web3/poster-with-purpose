@@ -6,7 +6,7 @@ const StyledHeader = styled.div`
   display: flex;
   background: #ffffff;
   margin-top: 33px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   justify-content: space-around;
   margin-left: 50px;
 `;

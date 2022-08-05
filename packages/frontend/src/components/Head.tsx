@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Col, Row } from 'antd';
 
 const HeadContainer = styled.div`
   display: flex;
@@ -8,17 +7,27 @@ const HeadContainer = styled.div`
   justify-content: center;
   align-content: center;
   width: 95%;
-  height: 50vh;
-  margin-top: 150px;
+  height: 100%;
   margin-bottom: 150px;
   margin-left: 50px;
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  height: 100%;
+`;
+
 const Title = styled.h1`
-  width: 70%;
+  width: 60%;
   color: black;
+  font-family: "Satoshi-Regular";
+  font-style: normal;
+  font-weight: 400;
   font-size: 64px;
-  font-weight: medium;
+  line-height: 72px;
 `;
 
 const Description = styled.p`
@@ -26,20 +35,23 @@ const Description = styled.p`
   color: black;
   margin: 0px 00px;
   font-size: 28px;
+  font-family: 'Satoshi';
 `;
 
 const Image = styled.img`
-  width: 100%;
+  object-fit: cover;
+  width: 70%;
+  height: auto;
 `;
 
 const Head = () => {
   return (
     <HeadContainer>
-      <div>
+      <TextContainer>
         <Title>This is 24/7 live protest page</Title>
         <Description>You can download any poster for print and print it any size you wish. You can also support artst by sending some donatins and you get NFT</Description>
-      </div>
-      <Image src="tmp_head.png" alt="Head" />
+      </TextContainer>
+      <Image src="assets/head.png" alt="Head" />
     </HeadContainer>
   );
 };
