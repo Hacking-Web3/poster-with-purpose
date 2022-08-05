@@ -1,6 +1,7 @@
 import { Carousel } from 'antd';
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import Head from "../components/Head";
 
 const Poster = styled.h3`
   height: 50vh;
@@ -29,7 +30,13 @@ const Main = () => {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div style={{
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+    }}>
+      <Head />
       <Carousel style={{
         width: "100%",
         height: "50vh"

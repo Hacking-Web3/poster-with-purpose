@@ -4,7 +4,6 @@ const StyledFooter = styled.div`
   background: #f2fcff;;
   width: 100%;
   height: 25vh;
-  position: absolute;
   bottom: 0;
 `;
 
