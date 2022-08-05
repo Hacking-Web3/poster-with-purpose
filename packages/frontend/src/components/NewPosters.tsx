@@ -4,13 +4,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ImportantPosterContainer = styled.div`
+const NewPosterContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 150px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #fdf8ff;
 `;
 
 const Title = styled.h1`
@@ -18,19 +20,19 @@ const Title = styled.h1`
   font-weight: bold;
   font-size: 28px;
   text-align: center;
+  margin-bottom: 50px;
 `;
 
 const Image = styled.img`
   object-fit: cover;
-  width: 90%;
+  width: 80%;
 `;
 
 const CustomSlider = styled(Slider)`
-  width: 80%;
+  width: 90%;
   height: 100%;
   .slick-next,
   .slick-prev {
-    width: 0%;
     z-index: 1;
   }
   .slick-prev:before,
@@ -55,30 +57,40 @@ const TopPosters = [
     title: "4"
   },
   {
-    title: "3"
+    title: "5"
   },
   {
-    title: "4"
-  }
+    title: "6"
+  },
+  {
+    title: "7"
+  },
+  {
+    title: "8"
+  },
+  {
+    title: "9"
+  },
+  {
+    title: "10"
+  },
 ]
 
-const ImportantPosters = () => {
+const NewPosters = () => {
   let navigate = useNavigate();
   const settings = {
     dots: false,
-    infinite: false,
-    arrows: true,
-    speed: 500,
-    // centerMode: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 4000
+    infinite: true,
+    arrows: false,
+    slidesToShow: 6,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 2000
   };
 
   return (
-    <ImportantPosterContainer>
-      <Title>Most important posters of the week</Title>
+    <NewPosterContainer>
+      <Title>New posters</Title>
       <CustomSlider {...settings}>
         {TopPosters.map((poster, index) => {
           return (
@@ -91,8 +103,8 @@ const ImportantPosters = () => {
           )
         })}
       </CustomSlider>
-    </ImportantPosterContainer>
+    </NewPosterContainer>
   );
 };
 
-export default ImportantPosters;
+export default NewPosters;
