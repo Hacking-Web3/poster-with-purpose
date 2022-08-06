@@ -9,12 +9,12 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import routes from './routes';
 import { useRoutes } from 'react-router-dom';
 
-import SatoshiRegular from "./assets/fonts/Satoshi-Regular.otf";
+import SatoshiRegular from "/assets/fonts/Satoshi-Regular.otf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: Satoshi-Regular;
-    src: url("./assets/fonts/Satoshi-Regular.otf");
+    src: url("/assets/fonts/Satoshi-Regular.otf");
   },
 `;
 

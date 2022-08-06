@@ -71,7 +71,7 @@ const Footer = () => {
       </FooterContainer>
       <FooterContainer>
         <FooterItem><BlackText>2022</BlackText></FooterItem>
-        <FooterItem><Image src="logo.png" alt="logo" /></FooterItem>
+        <FooterItem><Image src="/logo.png" alt="logo" /></FooterItem>
       </FooterContainer>
     </FooterContent>
   );
