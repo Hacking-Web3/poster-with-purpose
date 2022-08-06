@@ -7,8 +7,10 @@ import {
   UploadProps,
 } from "antd/lib/upload";
 import { useAtom } from "jotai";
+import { NFTStorage } from "nft.storage";
 import { useState } from "react";
 import styled from "styled-components";
+import { useAccount } from "wagmi";
 import { addPopupVisible } from "../state/addPoster/atoms";
 
 const Header = styled.header`
@@ -17,22 +19,34 @@ const Header = styled.header`
   color: #4a6346;
 `;
 
+const UploadingRules = styled.span`
+  font-size: 11px;
+  text-transform: uppercase;
+
+  color: #83a380;
+`;
+
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result as string));
   reader.readAsDataURL(img);
 };
 
-const beforeUpload = (file: RcFile) => {
+const beforeUpload = async (file: RcFile) => {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {
     message.error("You can only upload JPG/PNG file!");
   }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
+  const isLt40M = file.size / 1024 / 1024 < 40;
+  if (!isLt40M) {
+    message.error("Image must smaller than 40MB!");
   }
-  return isJpgOrPng && isLt2M;
+  // const client = new NFTStorage({
+  // token: process.env.REACT_APP_NFT_STORAGE_TOKEN!,
+  // });
+  // const cid = await client.storeBlob(file);
+  // console.log(cid);
+  return isJpgOrPng && isLt40M;
 };
 
 // TODO: Fetch tags from firebase
@@ -45,6 +59,7 @@ const UploadModal = () => {
   const [imageUrl, setImageUrl] = useState<string>();
   const [modalVisible, setModalVisibility] = useAtom(addPopupVisible);
   const [selectedTags, setSelectedTags] = useState<string[]>(["Books"]);
+  const { address } = useAccount();
   const handleTagsChange = (tag: string, checked: boolean) => {
     const nextSelectedTags = checked
       ? [...selectedTags, tag]
@@ -69,14 +84,25 @@ const UploadModal = () => {
   };
 
   const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
+    <div>{loading ? <LoadingOutlined /> : <PlusOutlined />}</div>
   );
 
   const onCreatorSwitch = (checked: boolean) => {
     setIsCreator(checked);
+  };
+
+  const customReq = (some: any) => {
+    const client = new NFTStorage({
+      token: process.env.REACT_APP_NFT_STORAGE_TOKEN!,
+    });
+    client.storeBlob(some.file).then((cid: string) => {
+      some.file.cid = cid;
+      some.onSuccess(cid);
+    });
+  };
+
+  const onSubmit = (form: any) => {
+    console.log(form);
   };
 
   return (
@@ -86,25 +112,35 @@ const UploadModal = () => {
       onCancel={() => setModalVisibility(!modalVisible)}
       maskStyle={{ backgroundColor: "#283127", opacity: 0.78 }}
       footer={null}
+      width={350}
     >
       <Header>Upload a poster</Header>
 
-      <Form form={form} layout="vertical">
-        <Upload
-          name="avatar"
-          listType="picture-card"
-          className="avatar-uploader"
-          showUploadList={false}
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          beforeUpload={beforeUpload}
-          onChange={handleChange}
-        >
-          {imageUrl ? (
-            <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-          ) : (
-            uploadButton
-          )}
-        </Upload>
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onSubmit}
+        initialValues={{ fundsRecipient: address }}
+      >
+        <Form.Item name="imageURI">
+          <Upload
+            name="avatar"
+            listType="picture-card"
+            className="poster-uploader"
+            showUploadList={false}
+            // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            customRequest={customReq}
+            beforeUpload={beforeUpload}
+            onChange={handleChange}
+            style={{ width: 284 }}
+          >
+            {imageUrl ? (
+              <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+            ) : (
+              uploadButton
+            )}
+          </Upload>
+        </Form.Item>
         <Form.Item label="I'm a creator" name="isCreator">
           <Switch
             checkedChildren="ON"
@@ -129,8 +165,8 @@ const UploadModal = () => {
             placeholder="Add short description"
           />
         </Form.Item>
-        <Form.Item label="Wallet address" name="fundsRecipient">
-          <Input placeholder="Add title" />
+        <Form.Item label="Donations recipient" name="fundsRecipient">
+          <Input placeholder="Add polygon address" />
         </Form.Item>
         <Form.Item label="Country" name="country">
           <Input placeholder="Your country" />
@@ -138,7 +174,7 @@ const UploadModal = () => {
         <Form.Item label="Year of creation" name="year">
           <Input placeholder="2022" />
         </Form.Item>
-        <Form.Item label="Year of creation" name="year">
+        <Form.Item label="Choose topics" name="tags" className="tags">
           {tagsData.map((tag) => (
             <Tag.CheckableTag
               key={tag}
@@ -149,13 +185,13 @@ const UploadModal = () => {
             </Tag.CheckableTag>
           ))}
         </Form.Item>
-        <span>
+        <UploadingRules>
           By uploading Artwork to Posters  with purpose you agree to attribute
           your creation with creative commons  0 license
-        </span>
+        </UploadingRules>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="form-button">
             Submit
           </Button>
         </Form.Item>
