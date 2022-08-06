@@ -58,6 +58,7 @@ const Link = styled.a`
   line-height: 24px;
   :hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 

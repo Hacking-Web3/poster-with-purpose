@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardNewPoster from "./CardNewPoster";
+import NewestPosters from "../mocks/posters.json"
 
 const NewPosterContainer = styled.div`
   width: 100%;
@@ -37,135 +38,6 @@ const CustomSlider = styled(Slider)`
     color: black;
   }
 `
-
-const NewestPosters = [
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster1.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice"],
-    image: "assets/poster2.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation"],
-    image: "assets/poster3.png"
-  },
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Unity"],
-    image: "assets/poster4.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["Disinformation", "Change", "Unity"],
-    image: "assets/poster5.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster6.png"
-  },
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster1.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice"],
-    image: "assets/poster2.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation"],
-    image: "assets/poster3.png"
-  },
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Unity"],
-    image: "assets/poster4.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["Disinformation", "Change", "Unity"],
-    image: "assets/poster5.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster6.png"
-  },
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster1.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice"],
-    image: "assets/poster2.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation"],
-    image: "assets/poster3.png"
-  },
-  {
-    author: "Elvis Moss",
-    title: "Era of Disinformation",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Unity"],
-    image: "assets/poster4.png"
-  },
-  {
-    author: "Alexander Rybin",
-    title: "Unity and Peace",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["Disinformation", "Change", "Unity"],
-    image: "assets/poster5.png"
-  },
-  {
-    author: "Anna Apple",
-    title: "Era of Disinformation in the new wild world",
-    description: "2022, Spain / 423 u. printed in last 30 days",
-    tags: ["World Justice", "Disinformation", "Change", "Unity"],
-    image: "assets/poster6.png"
-  }
-];
 
 const NewPosters = () => {
   const settings = {

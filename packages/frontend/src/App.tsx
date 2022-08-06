@@ -53,7 +53,7 @@ function App() {
       >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-            {routing}
+          {routing}
         </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>

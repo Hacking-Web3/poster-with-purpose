@@ -8,7 +8,6 @@ const PosterCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #fdf8ff;
     margin-bottom: 50px;
 `;
 
@@ -57,6 +56,7 @@ const Button = styled.button`
   :hover {
     background: #4A6346;
     color: #FFFFFF;
+    cursor: pointer;
   } 
 `;
 

@@ -1,11 +1,11 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 
 const StyledHeader = styled.div`
   display: flex;
-  background: #ffffff;
-  margin-top: 33px;
+  padding-top: 33px;
   margin-bottom: 50px;
   justify-content: space-around;
   margin-left: 50px;
@@ -23,6 +23,9 @@ const Logo = styled.div`
     img:last-child {
         margin-left: 20px;
     }
+    :hover {
+        cursor: pointer;
+    }
 `;
 
 const Button = styled.div`
@@ -33,21 +36,23 @@ const Button = styled.div`
 `;
 
 const Header = () => {
-//   const { data : walletData } = useAccount();
+  //   const { data : walletData } = useAccount();
+  let navigate = useNavigate();
+
   return (
     <StyledHeader>
-      <Logo>
+      <Logo onClick={() => navigate("/")}>
         <img src="logo.png" alt="Logo" />
         <img src="brandName.png" alt="BrandName" />
       </Logo>
       <Button>
         {/* {walletData && ( */}
-          <ConnectButton
-            chainStatus="name"
-            accountStatus="address"
-            label="Connect"
-            showBalance={false}
-          />
+        <ConnectButton
+          chainStatus="name"
+          accountStatus="address"
+          label="Connect"
+          showBalance={false}
+        />
         {/* )} */}
       </Button>
     </StyledHeader>
