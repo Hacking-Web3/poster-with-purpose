@@ -60,8 +60,8 @@ const BrowseByTopics = () => {
     <BrowseByTopicsContainer>
       <Title>Browse by topics</Title>
       <TagsContainer>
-        {Tags.slice(0, tagsToPrint).map((tag) => (
-          <Tag>{tag}</Tag>
+        {Tags.slice(0, tagsToPrint).map((tag, index) => (
+          <Tag key={index} onClick={() => navigate("/topic/"+tag)}>{tag}</Tag>
         ))}
         { tagsToPrint < Tags.length && (
           <Tag onClick={() => setTagsToPrint(tagsToPrint + 20)}>

@@ -42,8 +42,8 @@ const Header = () => {
   return (
     <StyledHeader>
       <Logo onClick={() => navigate("/")}>
-        <img src="logo.png" alt="Logo" />
-        <img src="brandName.png" alt="BrandName" />
+        <img src="/logo.png" alt="Logo" />
+        <img src="/brandName.png" alt="BrandName" />
       </Logo>
       <Button>
         {/* {walletData && ( */}

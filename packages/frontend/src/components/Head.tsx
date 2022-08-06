@@ -51,7 +51,7 @@ const Head = () => {
         <Title>This is 24/7 live protest page</Title>
         <Description>You can download any poster for print and print it any size you wish. You can also support arts by sending some donations and you get NFT.</Description>
       </TextContainer>
-      <Image src="assets/head.png" alt="Head" />
+      <Image src="/assets/head.png" alt="Head" />
     </HeadContainer>
   );
 };

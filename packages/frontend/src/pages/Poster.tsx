@@ -9,7 +9,7 @@ const Poster = () => {
         justifyContent: "center"
       }}
     >
-      <img src="/static/images/poster.png" alt="poster" />
+      <img src="/assets/poster6.png" alt="poster" />
     </div>
   );
 };

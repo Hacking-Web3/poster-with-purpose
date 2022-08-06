@@ -12,7 +12,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster1.png"
+        "image": "/assets/poster1.png"
       },
       {
         "author": "Alexander Rybin",
@@ -21,7 +21,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -31,7 +31,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -40,7 +40,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -50,7 +50,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -59,7 +59,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -69,7 +69,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -78,7 +78,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -88,7 +88,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -97,7 +97,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -107,7 +107,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -118,7 +118,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -130,7 +130,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -141,7 +141,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -153,7 +153,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -164,7 +164,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -176,7 +176,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -187,7 +187,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -199,7 +199,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -210,7 +210,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -222,7 +222,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -233,7 +233,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -245,7 +245,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       }
     ]
   },
@@ -260,7 +260,7 @@
           "World Justice",
           "Unity"
         ],
-        "image": "assets/poster4.png"
+        "image": "/assets/poster4.png"
       },
       {
         "author": "Alexander Rybin",
@@ -271,7 +271,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -283,7 +283,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -294,7 +294,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -306,7 +306,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -317,7 +317,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -329,7 +329,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -340,7 +340,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -352,7 +352,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -363,7 +363,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -375,7 +375,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -386,7 +386,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -398,7 +398,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -409,7 +409,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -421,7 +421,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -432,7 +432,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -444,7 +444,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -455,7 +455,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -467,7 +467,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -478,7 +478,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -490,7 +490,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -501,7 +501,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -513,7 +513,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -524,7 +524,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -536,7 +536,293 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Elvis Moss",
+        "title": "Era of Disinformation",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Unity"
+        ],
+        "image": "/assets/poster4.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
+      },
+      {
+        "author": "Alexander Rybin",
+        "title": "Unity and Peace",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster5.png"
+      },
+      {
+        "author": "Anna Apple",
+        "title": "Era of Disinformation in the new wild world",
+        "description": "2022, Spain / 423 u. printed in last 30 days",
+        "tags": [
+          "World Justice",
+          "Disinformation",
+          "Change",
+          "Unity"
+        ],
+        "image": "/assets/poster6.png"
       }
     ]
   },
@@ -553,7 +839,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster1.png"
+        "image": "/assets/poster1.png"
       },
       {
         "author": "Alexander Rybin",
@@ -562,7 +848,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -572,7 +858,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -583,7 +869,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -595,7 +881,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -606,7 +892,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -618,7 +904,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -629,7 +915,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -641,7 +927,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -652,7 +938,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -664,7 +950,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -675,7 +961,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -687,7 +973,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -698,7 +984,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -710,7 +996,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -721,7 +1007,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -733,7 +1019,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -744,7 +1030,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -756,7 +1042,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -767,7 +1053,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -779,7 +1065,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -790,7 +1076,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -802,7 +1088,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -813,7 +1099,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -825,7 +1111,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       }
     ]
   },
@@ -840,7 +1126,7 @@
           "World Justice",
           "Unity"
         ],
-        "image": "assets/poster4.png"
+        "image": "/assets/poster4.png"
       },
       {
         "author": "Alexander Rybin",
@@ -851,7 +1137,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -863,7 +1149,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -874,7 +1160,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -886,7 +1172,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -897,7 +1183,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -909,7 +1195,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -920,7 +1206,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -932,7 +1218,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -943,7 +1229,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -955,7 +1241,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -966,7 +1252,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -978,7 +1264,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -989,7 +1275,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1001,7 +1287,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1012,7 +1298,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1024,7 +1310,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1035,7 +1321,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1047,7 +1333,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1058,7 +1344,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1070,7 +1356,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1081,7 +1367,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1093,7 +1379,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       }
     ]
   },
@@ -1110,7 +1396,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster1.png"
+        "image": "/assets/poster1.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1119,7 +1405,7 @@
         "tags": [
           "World Justice"
         ],
-        "image": "assets/poster2.png"
+        "image": "/assets/poster2.png"
       },
       {
         "author": "Anna Apple",
@@ -1129,7 +1415,7 @@
           "World Justice",
           "Disinformation"
         ],
-        "image": "assets/poster3.png"
+        "image": "/assets/poster3.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1140,7 +1426,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1152,7 +1438,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1163,7 +1449,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1175,7 +1461,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1186,7 +1472,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1198,7 +1484,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1209,7 +1495,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1221,7 +1507,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1232,7 +1518,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1244,7 +1530,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1255,7 +1541,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1267,7 +1553,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1278,7 +1564,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1290,7 +1576,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1301,7 +1587,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1313,7 +1599,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1324,7 +1610,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1336,7 +1622,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1347,7 +1633,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1359,7 +1645,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       }
     ]
   },
@@ -1374,7 +1660,7 @@
           "World Justice",
           "Unity"
         ],
-        "image": "assets/poster4.png"
+        "image": "/assets/poster4.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1385,7 +1671,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1397,7 +1683,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1408,7 +1694,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1420,7 +1706,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1431,7 +1717,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1443,7 +1729,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1454,7 +1740,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1466,7 +1752,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1477,7 +1763,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1489,7 +1775,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1500,7 +1786,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1512,7 +1798,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1523,7 +1809,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1535,7 +1821,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1546,7 +1832,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1558,7 +1844,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       },
       {
         "author": "Alexander Rybin",
@@ -1569,7 +1855,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster5.png"
+        "image": "/assets/poster5.png"
       },
       {
         "author": "Anna Apple",
@@ -1581,7 +1867,7 @@
           "Change",
           "Unity"
         ],
-        "image": "assets/poster6.png"
+        "image": "/assets/poster6.png"
       }
     ]
   }
