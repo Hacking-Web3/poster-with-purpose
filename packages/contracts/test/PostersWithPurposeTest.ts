@@ -207,10 +207,15 @@ describe("PostersWithPurpose test", function () {
         signature,
         { value: ethers.utils.parseEther("0.001") }
       );
-      await createTx.wait();
+      await createTx2.wait();
       expect(await erc721.totalSupply()).to.equal(2);
 
       // TODO: Test that userA and userB has proper amount of tokens
+      const balanceA = await erc721.balanceOf(userA.address);
+      const balanceB = await erc721.balanceOf(userB.address);
+
+      expect(balanceA).to.equal(0);
+      expect(balanceB).to.equal(2);
     });
   });
 });
