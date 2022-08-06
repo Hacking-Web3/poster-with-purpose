@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { IUsersList } from "../types/types";
 
 const BackersListContainer = styled.div`
   width: 80%;
@@ -68,58 +69,7 @@ const ProfilePicture = styled.img`
   object-fit: cover;
 `;
 
-const Backers = [
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-  {
-    "username": "0x0904...9859",
-    "profilePicture": "/assets/profile1.png"
-  },
-  {
-    "username": "lilyrose.eth",
-    "profilePicture": "/assets/profile2.png"
-  },
-];
-
-const BackersList = () => {
+const BackersList = ({ users }: IUsersList) => {
   let navigate = useNavigate();
   const [backersToPrint, setBackersToPrint] = useState(10);
 
@@ -127,13 +77,13 @@ const BackersList = () => {
     <BackersListContainer>
       <Title>Bakers:</Title>
       <BackersContainer>
-        {Backers.slice(0, backersToPrint).map((backer, index) => (
-          <Backer key={index} onClick={() => navigate("/user/" + backer.username)}>
-            <ProfilePicture src={backer.profilePicture} />
-            <Username>{backer.username}</Username>
+        {users.slice(0, backersToPrint).map((user, index) => (
+          <Backer key={index} onClick={() => navigate("/user/" + user.walletAdress)}>
+            <ProfilePicture src={user.profilePicture} />
+            <Username>{user.walletAdress}</Username>
           </Backer>
         ))}
-        {backersToPrint < Backers.length && (
+        {backersToPrint < users.length && (
           <Backer onClick={() => setBackersToPrint(backersToPrint + 10)}>
             View more
           </Backer>

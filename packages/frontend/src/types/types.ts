@@ -19,3 +19,17 @@ export interface ITagsList {
     titlePosition?: "left" | "center";
     tags: string[];
 }
+
+export interface IUser {
+    name: string;
+    description: string,
+    walletAdress: string;
+    website: string,
+    twitter: string,
+    instagram: string,
+    profilePicture: string
+}
+
+export interface IUsersList {
+    users: IUser[];
+}
