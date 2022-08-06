@@ -2,24 +2,25 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ITagsList } from "../types/types";
+import Tag from "./common/Tag";
 
-const BrowseByTopicsContainer = styled.div`
+const TagsListContainer = styled.div`
   width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   align-content: center;
   background-color: #F5F5F5;
 `;
 
 const Title = styled.h1`
-  color: black;
-  font-weight: medium;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 50px;
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 33px;
 `;
 
 const TagsContainer = styled.div`
@@ -32,33 +33,17 @@ const TagsContainer = styled.div`
   width: 100%;
 `;
 
-const Tag = styled.button`
-  font-size: 16px;
-  line-height: 22px;
-  color: #B588C1;
-  background: #F9F1FC;
-  border: none;
-  border-radius: 30px;
-  font-family: 'Satoshi';
-  font-style: normal;
-  font-weight: 500;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 1% 2%;
-  :hover {
-    background-color: #B588C1;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-`;
-
-const BrowseByTopics = ({ title, tags }: ITagsList) => {
+const TagsList = ({ title, titlePosition, tags }: ITagsList) => {
   let navigate = useNavigate();
   const [tagsToPrint, setTagsToPrint] = useState(20);
 
   return (
-    <BrowseByTopicsContainer>
-      {title && <Title>{title}</Title>}
+    <TagsListContainer>
+      {title && titlePosition === "left" ?
+        <Title>{title}</Title>
+        :
+        <Title style={{ alignSelf: "center" }}>{title}</Title>
+      }
       <TagsContainer>
         {tags.slice(0, tagsToPrint).map((tag: string, index: any) => (
           <Tag key={index} onClick={() => navigate("/topic/" + tag)}>{tag}</Tag>
@@ -69,8 +54,8 @@ const BrowseByTopics = ({ title, tags }: ITagsList) => {
           </Tag>
         )}
       </TagsContainer>
-    </BrowseByTopicsContainer>
+    </TagsListContainer>
   );
 };
 
-export default BrowseByTopics;
+export default TagsList;

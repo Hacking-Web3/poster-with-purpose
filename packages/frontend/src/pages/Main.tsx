@@ -1,7 +1,7 @@
 import Head from "../components/Head";
 import PostersSlider from '../components/PosterSlider';
 import PosterByTopics from '../components/PostersByTopics';
-import BrowseByTopics from '../components/BrowseByTopics';
+import TagsList from '../components/TagsList';
 import PostersList from '../components/PosterList';
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ const Main = () => {
       <PostersList title={"Most important posters of the week"} posters={Posters} numberElements={6} actionButton={"navigate"}/>
       <PostersSlider title={"Newest posters"} posters={Posters} />
       <PosterByTopics />
-      <BrowseByTopics title={"Browse by topics"} tags={Tags} />
+      <TagsList title={"Browse by topics"} tags={Tags} />
     </MainContainer>
   );
 };

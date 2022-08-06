@@ -1,10 +1,10 @@
 export interface IPosterCard {
-    id?: string;
+    id: string;
     author: string;
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
     image: string;
-    tags?: string[];
+    tags: string[];
 }
 
 export interface IPostersList {
@@ -16,5 +16,6 @@ export interface IPostersList {
 
 export interface ITagsList {
     title?: string;
+    titlePosition?: "left" | "center";
     tags: string[];
 }

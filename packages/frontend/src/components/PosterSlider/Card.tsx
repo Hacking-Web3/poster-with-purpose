@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { IPosterCard } from "../../types/types";
+import Button from "../../components/common/Button";
 
 const PosterCardContainer = styled.div`
     width: 100%;
@@ -38,36 +39,13 @@ const ButtonContainer = styled.div`
   height: 100%;
 `;
 
-const Button = styled.button`
-  height: 100%;
-  width: auto;
-  padding: 2% 5%;
-  background: #DEF3DA;
-  border-radius: 30px;
-  border: none;
-  color: #4A6346;
-  font-family: 'Satoshi';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 20px;
-  text-align: center;
-  margin-bottom: 10px;
-  :hover {
-    background: #4A6346;
-    color: #FFFFFF;
-    cursor: pointer;
-  } 
-`;
-
-
-const Card = ({ id, author, image }: IPosterCard) => {
+const Card = (poster: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
     <PosterCardContainer>
-      <Image onClick={() => navigate("/poster/" + id)} src={image} alt="Head" />
-      <Author>{author}</Author>
+      <Image onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
+      <Author>{poster.author}</Author>
       <TimeStamp>A day ago</TimeStamp>
       <ButtonContainer>
         <Button>Print</Button>

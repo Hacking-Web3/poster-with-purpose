@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Card from "./Card";
-import { IPostersList } from "../../types/types";
+import Card from "./PosterSlider/Card";
+import { IPostersList } from "./../types/types";
 
 const NewPosterContainer = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ const CustomSlider = styled(Slider)`
   }
 `
 
-const PostersSlider = (postersList: IPostersList) => {
+const ProofOfUse = (posters: IPostersList) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -52,9 +52,9 @@ const PostersSlider = (postersList: IPostersList) => {
 
   return (
     <NewPosterContainer>
-      {postersList.title && <Title>{postersList.title}</Title>}
+      {posters.title && <Title>{posters.title}</Title>}
       <CustomSlider {...settings}>
-        {postersList.posters.map((poster, index) => {
+        {posters.posters.map((poster: any, index: any) => {
           return (
             <Card key={index} id={poster.id} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
@@ -64,4 +64,4 @@ const PostersSlider = (postersList: IPostersList) => {
   );
 };
 
-export default PostersSlider;
+export default ProofOfUse;

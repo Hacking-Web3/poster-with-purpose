@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { IPosterCard } from "../../types/types";
+import Tag from "../common/Tag";
 
 const PosterCardContainer = styled.div`
     width: 25%;
@@ -71,40 +72,20 @@ const TagsContainer = styled.div`
   margin-top: 5px;
 `;
 
-const Tag = styled.button`
-  font-size: 14px;
-  line-height: 13px;
-  color: #B588C1;
-  background-color: transparent;
-  border: 1px solid #E8DAEC;
-  border-radius: 30px;
-  font-family: 'Satoshi';
-  font-style: normal;
-  font-weight: 500;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 2% 5%;
-  :hover {
-    background-color: #E8DAEC;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-`;
-
-const CardPoster = ({ id, author, title, description, image, tags }: IPosterCard) => {
+const CardPoster = (poster: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
     <PosterCardContainer>
-      <Image onClick={() => navigate("/poster/" + id)} src={image} alt="Head" />
-      <Title><span style={{ fontWeight: "bold" }}>{author}</span>, {title}</Title>
-      <Description>{description}</Description>
+      <Image onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
+      <Title><span style={{ fontWeight: "bold" }}>{poster.author}</span>, {poster.title}</Title>
+      <Description>{poster.description}</Description>
       <ButtonContainer>
         <Button>Print</Button>
         <Button style={{ marginLeft: "10px" }}>Support author</Button>
       </ButtonContainer>
       <TagsContainer>
-        {tags?.map((tag, index) => (
+        {poster.tags.map((tag, index) => (
           <Tag onClick={() => navigate("/topic/" + tag)} key={index}>{tag}</Tag>
         ))}
       </TagsContainer>

@@ -50,24 +50,24 @@ const Button = styled.button`
   }
 `;
 
-const PostersList = ({ title, posters, numberElements, actionButton }: IPostersList) => {
-    const [postersToPrint, setPostersToPrint] = useState(numberElements ? numberElements : posters.length);
+const PostersList = (postersList: IPostersList) => {
+    const [postersToPrint, setPostersToPrint] = useState(postersList.numberElements ? postersList.numberElements : postersList.posters.length);
     let navigate = useNavigate();
 
     return (
         <PostersListContainer>
-            {title && <Title>{title}</Title>}
+            {postersList.title && <Title>{postersList.title}</Title>}
             <PostersContainer>
-                {posters.slice(0, postersToPrint).map((poster, index) => {
+                {postersList.posters.slice(0, postersToPrint).map((poster, index) => {
                     return (
-                        <Card key={index} id={poster.id} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
+                        <Card key={index} {...poster} />
                     )
                 })}
             </PostersContainer>
-            {actionButton === "navigate" ? (
+            {postersList.actionButton === "navigate" ? (
                 <Button onClick={() => navigate("/allPosters")} >View all</Button>
             ) : (
-                postersToPrint < posters.length && (
+                postersToPrint < postersList.posters.length && (
                     <Button onClick={() => setPostersToPrint(postersToPrint + 15)}>
                         Show more
                     </Button>

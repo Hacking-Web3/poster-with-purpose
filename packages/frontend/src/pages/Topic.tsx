@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Posters from "../mocks/postersByTopics.json";
-import BrowseByTopics from "../components/BrowseByTopics";
+import TagsList from "../components/TagsList";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import PostersList from "../components/PosterList";
+import Tag from "../components/common/Tag";
 
 import Tags from "../mocks/topics.json";
 
@@ -40,26 +41,6 @@ const TopicTitle = styled.h1`
   font-size: 20px;
 `;
 
-const Tag = styled.button`
-  font-size: 16px;
-  line-height: 22px;
-  color: #B588C1;
-  background: #F9F1FC;
-  border: none;
-  border-radius: 30px;
-  font-family: 'Satoshi';
-  font-style: normal;
-  font-weight: 500;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  padding: 1% 2%;
-  :hover {
-    background-color: #B588C1;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-`;
-
 const Topic = () => {
   const params = useParams();
   let navigate = useNavigate();
@@ -75,10 +56,10 @@ const Topic = () => {
     <TopicPostersContainer>
       <TitleContainer>
         <TopicTitle>All posters with topic</TopicTitle>
-        <Tag onClick={() => navigate("/topic/" + params.topic)}>{params.topic}</Tag>
+        <Tag style={{marginLeft: "20px"}} onClick={() => navigate("/topic/" + params.topic)}>{params.topic}</Tag>
       </TitleContainer>
       <PostersList posters={topic?.posters} numberElements={15} actionButton={"extend"} />
-      <BrowseByTopics title={"Browse by topics"} tags={Tags} />
+      <TagsList title={"Browse by topics"} tags={Tags} />
     </TopicPostersContainer>
   );
 };

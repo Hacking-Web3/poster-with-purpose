@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Posters from "../mocks/posters.json";
 import PostersList from "../components/PosterList";
-import BrowseByTopics from "../components/BrowseByTopics";
+import TagsList from "../components/TagsList";
 
 import Tags from "../mocks/topics.json";
 
@@ -20,7 +20,7 @@ const AllPosters = () => {
   return (
     <AllPostersContainer>
       <PostersList posters={Posters} numberElements={15} actionButton={"extend"} />
-      <BrowseByTopics title={"Browse by topics"} tags={Tags}  />
+      <TagsList title={"Browse by topics"} tags={Tags}  />
     </AllPostersContainer>
   );
 };
