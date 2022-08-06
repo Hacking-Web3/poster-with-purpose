@@ -33,13 +33,13 @@ describe("PostersWithPurpose test", function () {
       postersWithPurpose = await PostersWithPurpose.deploy(
         NFTCreatorAddress,
         0,
-        1
+        3
       );
 
       expect(await postersWithPurpose.ZoraNFTCreatorAddress()).to.equal(
         NFTCreatorAddress
       );
-      expect(await postersWithPurpose.getMinDonation()).to.equal(1);
+      expect(await postersWithPurpose.getMinDonation()).to.equal(3);
     });
   });
 
@@ -118,6 +118,9 @@ describe("PostersWithPurpose test", function () {
 
       expect(await contractDeployed.name()).to.equal("collection's name");
     });
+  });
+
+  describe("Minting", function () {
     it("allows minting first edition", async function () {
       let [userA, userB] = await ethers.getSigners();
 
@@ -217,6 +220,89 @@ describe("PostersWithPurpose test", function () {
 
       expect(balanceA).to.equal(1);
       expect(balanceB).to.equal(1);
+
+      await expect(postersWithPurpose.connect(userB).mintNft(
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        },
+        signature,
+        { value: 0 }
+      )).to.be.revertedWith("make some donation to mint");
+    });
+
+    it("Shouldn't allowed the purchase", async function () {
+      let [userA, userB] = await ethers.getSigners();
+      
+      let postersWithPurposeDomain = {
+        name: "PostersWithPurpose",
+        version: "1.0",
+        chainId: (await ethers.provider.getNetwork()).chainId,
+        verifyingContract: postersWithPurpose.address,
+      };
+
+      const signature = await userA._signTypedData(
+        postersWithPurposeDomain,
+        {
+          CreateEdition: [
+            { name: "creator", type: "address" },
+            { name: "name", type: "string" },
+            { name: "fundsRecipient", type: "address" },
+            { name: "description", type: "string" },
+            { name: "imageURI", type: "string" },
+          ],
+        },
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        }
+      );
+
+      let contractAddress = await postersWithPurpose.callStatic.createEdition(
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        },
+        signature
+      );
+
+      let createTx = await postersWithPurpose.connect(userB).createEdition(
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        },
+        signature
+      );
+      await createTx.wait();
+
+      let contractDeployed = new Contract(
+        contractAddress,
+        IERC721Drop__factory.abi,
+        userA
+      );
+
+      await expect(contractDeployed.connect(userB).purchase(1)).to.be.reverted;
+
+      let erc721 = new Contract(contractAddress, ERC721Abi, userB);
+      const balanceB = await erc721.balanceOf(userB.address);
+
+      expect(balanceB).to.equal(0);
     });
   });
 

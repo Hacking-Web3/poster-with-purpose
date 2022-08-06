@@ -16,6 +16,7 @@ contract PostersWithPurpose {
     mapping(string => address) public editionAddress;
 
     uint64 MAX_UINT64 = 2*64 - 1;
+    uint104 MAX_UINT104 = 2*104 -1;
 
     struct NftDetails {
         address creator;
@@ -28,7 +29,7 @@ contract PostersWithPurpose {
     bytes32 basicMerkleRoot = 0x0000000000000000000000000000000000000000000000000000000000000000;
 
     IERC721Drop.SalesConfiguration defaultConfig = IERC721Drop.SalesConfiguration(
-        uint104(0), uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
+        MAX_UINT64, uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
     );
 
     address public ZoraNFTCreatorAddress;
