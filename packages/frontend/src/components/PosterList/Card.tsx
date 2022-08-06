@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { IPosterCard } from "../../types/types";
 import Tag from "../common/Tag";
+import ModalPrintPoster from "../ModalPrintPoster";
+import ModalSupport from "../ModalSupport";
+import { useState } from "react";
 
 const PosterCardContainer = styled.div`
     width: 25%;
@@ -74,15 +77,19 @@ const TagsContainer = styled.div`
 
 const CardPoster = (poster: IPosterCard) => {
   let navigate = useNavigate();
+  const [isDownloadModalVisible, setIsDownloadModalVisible] = useState(false);
+  const [isSupportModalVisible, setIsSupportModalVisible] = useState(false);
 
   return (
     <PosterCardContainer>
+      <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
+      <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
       <Image onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
       <Title><span style={{ fontWeight: "bold" }}>{poster.author}</span>, {poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonContainer>
-        <Button>Print</Button>
-        <Button style={{ marginLeft: "10px" }}>Support author</Button>
+        <Button onClick={() => setIsDownloadModalVisible(true)} >Print</Button>
+        <Button onClick={() => setIsSupportModalVisible(true)} style={{ marginLeft: "10px" }}>Support author</Button>
       </ButtonContainer>
       <TagsContainer>
         {poster.tags.map((tag, index) => (
