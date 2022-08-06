@@ -2,6 +2,9 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
+import Button from "./common/Button";
+import { useSetAtom } from "jotai";
+import { addPopupVisible } from "../state/addPoster/atoms";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -12,31 +15,32 @@ const StyledHeader = styled.div`
 `;
 
 const Logo = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    img:first-child {
-        margin-right: 20px;
-    }
-    img:last-child {
-        margin-left: 20px;
-    }
-    :hover {
-        cursor: pointer;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  img:first-child {
+    margin-right: 20px;
+  }
+  img:last-child {
+    margin-left: 20px;
+  }
+  :hover {
+    cursor: pointer;
+  }
 `;
 
-const Button = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-right: 100px;
+const MenuContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 100px;
 `;
 
 const Header = () => {
-  //   const { data : walletData } = useAccount();
+  const { address } = useAccount();
+  const setModalVisibility = useSetAtom(addPopupVisible);
   let navigate = useNavigate();
 
   return (
@@ -45,7 +49,10 @@ const Header = () => {
         <img src="/logo.png" alt="Logo" />
         <img src="/brandName.png" alt="BrandName" />
       </Logo>
-      <Button>
+      <MenuContainer>
+        {address && (
+          <Button onClick={() => setModalVisibility(true)}>Add poster</Button>
+        )}
         {/* {walletData && ( */}
         <ConnectButton
           chainStatus="name"
@@ -54,9 +61,10 @@ const Header = () => {
           showBalance={false}
         />
         {/* )} */}
-      </Button>
+      </MenuContainer>
     </StyledHeader>
   );
 };
 
 export default Header;
+
