@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CardByTopics from "./CardByTopics";
 import postersByTopics from "../mocks/postersByTopics.json";
+import { useNavigate } from "react-router-dom";
 
 const NewPosterContainer = styled.div`
   width: 100%;
@@ -81,8 +81,26 @@ const TopicTitle = styled.h1`
   margin-top: 50px;
 `;
 
+const PostersContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding: 0 5%;
+`;
+
+const Image = styled.img`
+  object-fit: cover;
+  width: 25%;
+  height: auto;
+`;
+
 const PosterByTopics = () => {
   const [topic, setTopic] = useState(postersByTopics[0].topic);
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -101,7 +119,6 @@ const PosterByTopics = () => {
     )
   };
 
-
   return (
     <NewPosterContainer>
       <Title>Posters by topics</Title>
@@ -109,7 +126,11 @@ const PosterByTopics = () => {
         {postersByTopics.map((posters, index) => {
           return (
             <div key={index}>
-              <CardByTopics posters={posters.posters} />
+              <PostersContainer>
+                {posters.posters.slice(0, 3).map((poster, index) => (
+                  <Image key={index} onClick={() => navigate("/poster")} src={poster.image} alt="Head" />
+                ))}
+              </PostersContainer>
             </div>
           )
         })}

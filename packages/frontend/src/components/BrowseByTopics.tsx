@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Tags from "../mocks/topics.json";
+import { ITagsList } from "../types/types";
 
 const BrowseByTopicsContainer = styled.div`
   width: 80%;
@@ -52,18 +52,18 @@ const Tag = styled.button`
   }
 `;
 
-const BrowseByTopics = () => {
+const BrowseByTopics = ({ title, tags }: ITagsList) => {
   let navigate = useNavigate();
   const [tagsToPrint, setTagsToPrint] = useState(20);
 
   return (
     <BrowseByTopicsContainer>
-      <Title>Browse by topics</Title>
+      {title && <Title>{title}</Title>}
       <TagsContainer>
-        {Tags.slice(0, tagsToPrint).map((tag, index) => (
-          <Tag key={index} onClick={() => navigate("/topic/"+tag)}>{tag}</Tag>
+        {tags.slice(0, tagsToPrint).map((tag: string, index: any) => (
+          <Tag key={index} onClick={() => navigate("/topic/" + tag)}>{tag}</Tag>
         ))}
-        { tagsToPrint < Tags.length && (
+        {tagsToPrint < tags.length && (
           <Tag onClick={() => setTagsToPrint(tagsToPrint + 20)}>
             ...
           </Tag>
