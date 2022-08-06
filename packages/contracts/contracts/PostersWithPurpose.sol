@@ -4,12 +4,17 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./IZoraNFTCreator.sol";
+import "./ERC721DropStorageV1.sol";
 
 contract PostersWithPurpose {
     string private constant name = "PostersWithPurpose";
     string private constant version = "1.0";
     // TODO: Remove if not able to handle
     uint256 private editionNum;
+
+    // TODO: Set minimum amount of donation
+
+    mapping(string => address) public editionAddress;
 
     uint64 MAX_UINT64 = 2*64 - 1;
 
@@ -74,10 +79,31 @@ contract PostersWithPurpose {
        );
     }
 
+    function mintNft(
+        NftDetails calldata nftDetails,
+        bytes calldata signature
+    ) payable external returns (address) {
+        require(msg.value > 0, "make some donation to mint");
+        address nftAddress = editionAddress[nftDetails.imageURI];
+        if(nftAddress == address(0)) {
+            nftAddress = createEdition(nftDetails, signature);
+        }
+        
+        if (msg.value > 0) {
+            IERC721Drop(nftAddress).adminMint(msg.sender, 1);
+        }
+
+        (,,,address payable fundsRecipient) = ERC721DropStorageV1(nftAddress).config(); 
+
+        fundsRecipient.transfer(msg.value);
+
+        return nftAddress;
+    }
+
     function createEdition(
         NftDetails calldata nftDetails,
         bytes calldata signature
-    ) external returns (address) {
+    ) public returns (address) {
         require(
             ECDSA.recover(
                 hashCreateEdition(nftDetails),
@@ -88,7 +114,7 @@ contract PostersWithPurpose {
 
         editionNum++;
 
-        return
+        address nftAddress =
             NFTCreator.createEdition(
                 nftDetails.name,
                 "PWP",
@@ -101,5 +127,8 @@ contract PostersWithPurpose {
                 "",
                 nftDetails.imageURI
             );
+
+        editionAddress[nftDetails.imageURI] = nftAddress;
+        return nftAddress;
     }
 }
