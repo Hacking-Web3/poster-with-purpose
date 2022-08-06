@@ -19,7 +19,8 @@ async function main() {
   const postersWithPurpose = await PostersWithPurpose.deploy(
     ZoraNFTCreatorAddress,
     0,
-    1
+    1,
+    "0x6b0d0b3834b921d304e55455ad86a1d47d6994ec"
   );
 
   await postersWithPurpose.deployed();
