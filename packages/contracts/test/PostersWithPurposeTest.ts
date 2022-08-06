@@ -170,7 +170,7 @@ describe("PostersWithPurpose test", function () {
         { value: ethers.utils.parseEther("0.001") }
       );
 
-      let createTx = await postersWithPurpose.connect(userB).mintNft(
+      let createTx = await postersWithPurpose.connect(userA).mintNft(
         {
           creator: userA.address,
           name: "collection's name",
@@ -214,8 +214,8 @@ describe("PostersWithPurpose test", function () {
       const balanceA = await erc721.balanceOf(userA.address);
       const balanceB = await erc721.balanceOf(userB.address);
 
-      expect(balanceA).to.equal(0);
-      expect(balanceB).to.equal(2);
+      expect(balanceA).to.equal(1);
+      expect(balanceB).to.equal(1);
     });
   });
 });
