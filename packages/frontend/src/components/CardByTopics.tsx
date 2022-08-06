@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { IPosterCard, IPosterCardArray } from "../types/types";
+import { IPosterCardArray } from "../types/types";
 
 const PostersContainer = styled.div`
     width: 100%;
