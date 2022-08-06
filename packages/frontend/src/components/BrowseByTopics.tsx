@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { IPosterCard, IPosterCardArray } from "../types/types";
+import { useState } from "react";
+import Tags from "../mocks/topics.json";
 
 const BrowseByTopicsContainer = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
+  justify-content: center;
+  align-content: center;
   background-color: #F5F5F5;
-  padding-left: 50px;
 `;
 
 const Title = styled.h1`
@@ -26,10 +27,9 @@ const TagsContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-content: center;
   align-items: center;
-  width: 95%;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  width: 100%;
 `;
 
 const Tag = styled.button`
@@ -48,24 +48,29 @@ const Tag = styled.button`
   :hover {
     background-color: #B588C1;
     color: #FFFFFF;
+    cursor: pointer;
   }
 `;
 
-const Tags = ["Art", "Design", "Technology", "Music", "Film", "Literature", "Photography", "Desinformation", "Design", "Technology", "Music", "Film", "Literature", "Photography", "Desinformation", "Art", "Design", "Technology", "Music", "Film", "Literature", "Photography", "Desinformation", "Design", "Technology", "Music", "Film", "Literature", "Photography", "Desinformation", "..."];
-
 const BrowseByTopics = () => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
+  const [tagsToPrint, setTagsToPrint] = useState(20);
 
-    return (
-        <BrowseByTopicsContainer>
-            <Title>Browse by topics</Title>
-            <TagsContainer>
-                {Tags.map((tag) => (
-                    <Tag>{tag}</Tag>
-                ))}
-            </TagsContainer>
-        </BrowseByTopicsContainer>
-    );
+  return (
+    <BrowseByTopicsContainer>
+      <Title>Browse by topics</Title>
+      <TagsContainer>
+        {Tags.slice(0, tagsToPrint).map((tag) => (
+          <Tag>{tag}</Tag>
+        ))}
+        { tagsToPrint < Tags.length && (
+          <Tag onClick={() => setTagsToPrint(tagsToPrint + 20)}>
+            ...
+          </Tag>
+        )}
+      </TagsContainer>
+    </BrowseByTopicsContainer>
+  );
 };
 
 export default BrowseByTopics;

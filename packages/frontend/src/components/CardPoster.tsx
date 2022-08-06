@@ -57,6 +57,7 @@ const Button = styled.button`
   :hover {
     background: #4A6346;
     color: #FFFFFF;
+    cursor: pointer;
   }
 `;
 
@@ -86,10 +87,11 @@ const Tag = styled.button`
   :hover {
     background-color: #E8DAEC;
     color: #FFFFFF;
+    cursor: pointer;
   }
 `;
 
-const CardPosterOfWeek = ({ author, title, description, image, tags }: IPosterCard) => {
+const CardPoster = ({ author, title, description, image, tags }: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
@@ -110,4 +112,4 @@ const CardPosterOfWeek = ({ author, title, description, image, tags }: IPosterCa
   );
 };
 
-export default CardPosterOfWeek;
+export default CardPoster;

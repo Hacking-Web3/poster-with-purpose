@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#F5F5F5" }} >
       <Header />
       <Outlet />
       <Footer />

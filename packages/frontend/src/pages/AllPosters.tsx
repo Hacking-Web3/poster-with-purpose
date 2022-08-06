@@ -1,26 +1,21 @@
 import styled from "styled-components";
-import CardPoster from "./CardPoster";
-import { useNavigate } from "react-router-dom";
-import TopPosters from "../mocks/posters.json";
+import CardPoster from "../components/CardPoster";
+import Posters from "../mocks/posters.json";
+import BrowseByTopics from "../components/BrowseByTopics";
+import { useState } from "react";
 
-const ImportantPosterContainer = styled.div`
+const AllPostersContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  align-content: center;
   padding-bottom: 100px;
 `;
 
-const Title = styled.h1`
-  color: black;
-  font-weight: medium;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 50px;
-`;
-
-const PosterContainer = styled.div`
+const PostersContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -42,6 +37,7 @@ const Button = styled.button`
   border: 1px solid #AFCAAC;
   border-radius: 30px;
   padding: 0.75% 4%;
+  margin-bottom: 50px;
   :hover {
     background: #4A6346;
     color: #FFFFFF;
@@ -49,22 +45,26 @@ const Button = styled.button`
   }
 `;
 
-const ImportantPosters = () => {
-  let navigate = useNavigate();
+const AllPosters = () => {
+  const [postersToPrint, setPostersToPrint] = useState(15);
 
   return (
-    <ImportantPosterContainer>
-      <Title>Most important posters of the week</Title>
-      <PosterContainer>
-        {TopPosters.slice(0, 6).map((poster, index) => {
+    <AllPostersContainer>
+      <PostersContainer>
+        {Posters.slice(0, postersToPrint).map((poster, index) => {
           return (
             <CardPoster key={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
         })}
-      </PosterContainer>
-      <Button onClick={() => navigate("/allPosters")} >View all</Button>
-    </ImportantPosterContainer>
+      </PostersContainer>
+      {postersToPrint < Posters.length && (
+        <Button onClick={() => setPostersToPrint(postersToPrint + 15)}>
+          Show more
+        </Button>
+      )}
+      <BrowseByTopics />
+    </AllPostersContainer>
   );
 };
 
-export default ImportantPosters;
+export default AllPosters;

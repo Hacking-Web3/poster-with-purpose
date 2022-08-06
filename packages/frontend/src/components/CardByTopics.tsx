@@ -24,7 +24,7 @@ const CardByTopics = (posters: IPosterCardArray) => {
 
   return (
     <PostersContainer>
-      {posters.posters.map((poster, index) => (
+      {posters.posters.slice(0, 3).map((poster, index) => (
         <Image key={index} onClick={() => navigate("/poster")} src={poster.image} alt="Head" />
       ))}
     </PostersContainer>
