@@ -15,7 +15,7 @@ const routes = [
       { path: '', element: <Main /> },
       { path: 'allPosters', element: <AllPosters /> },
       { path: 'topic/:topic', element: <Topic /> },
-      { path: 'poster', element: <Poster /> },
+      { path: 'poster/:id', element: <Poster /> },
       { path: '404', element: <Error404 /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

@@ -128,7 +128,7 @@ const PosterByTopics = () => {
             <div key={index}>
               <PostersContainer>
                 {posters.posters.slice(0, 3).map((poster, index) => (
-                  <Image key={index} onClick={() => navigate("/poster")} src={poster.image} alt="Head" />
+                  <Image key={index} onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
                 ))}
               </PostersContainer>
             </div>

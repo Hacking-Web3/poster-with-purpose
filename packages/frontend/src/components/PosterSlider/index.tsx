@@ -56,7 +56,7 @@ const PostersSlider = ({ title, posters}: IPostersList) => {
       <CustomSlider {...settings}>
         {posters.map((poster, index) => {
           return (
-            <Card key={index} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
+            <Card key={index} id={poster.id} author={poster.author} title={poster.title} description={poster.description} image={poster.image} tags={poster.tags} />
           )
         })}
       </CustomSlider>

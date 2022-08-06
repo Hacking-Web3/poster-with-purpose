@@ -91,13 +91,13 @@ const Tag = styled.button`
   }
 `;
 
-const CardPoster = ({ author, title, description, image, tags }: IPosterCard) => {
+const CardPoster = ({ id, author, title, description, image, tags }: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
     <PosterCardContainer>
-      <Image onClick={() => navigate("/poster")} src={image} alt="Head" />
-      <Title><span style={{fontWeight: "bold"}}>{author}</span>, {title}</Title>
+      <Image onClick={() => navigate("/poster/" + id)} src={image} alt="Head" />
+      <Title><span style={{ fontWeight: "bold" }}>{author}</span>, {title}</Title>
       <Description>{description}</Description>
       <ButtonContainer>
         <Button>Print</Button>
@@ -105,7 +105,7 @@ const CardPoster = ({ author, title, description, image, tags }: IPosterCard) =>
       </ButtonContainer>
       <TagsContainer>
         {tags?.map((tag, index) => (
-          <Tag onClick={() => navigate("/topic/"+tag)} key={index}>{tag}</Tag>
+          <Tag onClick={() => navigate("/topic/" + tag)} key={index}>{tag}</Tag>
         ))}
       </TagsContainer>
     </PosterCardContainer>

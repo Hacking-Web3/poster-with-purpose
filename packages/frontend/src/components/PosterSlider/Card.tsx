@@ -61,12 +61,12 @@ const Button = styled.button`
 `;
 
 
-const Card = ({ author, image }: IPosterCard) => {
+const Card = ({ id, author, image }: IPosterCard) => {
   let navigate = useNavigate();
 
   return (
-    <PosterCardContainer onClick={() => navigate("/poster")}>
-      <Image src={image} alt="Head" />
+    <PosterCardContainer>
+      <Image onClick={() => navigate("/poster/" + id)} src={image} alt="Head" />
       <Author>{author}</Author>
       <TimeStamp>A day ago</TimeStamp>
       <ButtonContainer>

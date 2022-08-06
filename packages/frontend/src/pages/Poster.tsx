@@ -1,15 +1,15 @@
+import { useParams } from 'react-router';
+import Posters from '../mocks/posters.json';
+import { IPosterCard } from '../types/types';
+
 const Poster = () => {
+  const { id } = useParams();
+  const poster = Posters.find((p: IPosterCard ) => p.id === id);
+
+  console.log(poster);
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <img src="/assets/poster6.png" alt="poster" />
+    <div>
+      <img src={poster?.image} alt="poster" />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 export interface IPosterCard {
+    id?: string;
     author: string;
     title?: string;
     description?: string;
