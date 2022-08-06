@@ -1,15 +1,18 @@
-import { ReactNode } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Outlet } from "react-router-dom";
+import UploadModal from "./UploadModal";
 
-const Layout = ({ children }: { children?: ReactNode }) => {
+const Layout = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#F5F5F5" }}>
       <Header />
-      <div>{children}</div>
+      <Outlet />
       <Footer />
+      <UploadModal />
     </div>
   );
 };
 
 export default Layout;
+

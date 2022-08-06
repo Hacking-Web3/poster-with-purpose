@@ -1,50 +1,33 @@
-import { Carousel } from 'antd';
+import Head from "../components/Head";
+import PostersSlider from '../components/PosterSlider';
+import PosterByTopics from '../components/PostersByTopics';
+import TagsList from '../components/TagsList';
+import PostersList from '../components/PosterList';
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
-const Poster = styled.h3`
-  height: 50vh;
-  color: #fff;
-  line-height: 160px;
-  text-align: center;
-  background: #364d79;
+import Posters from "../mocks/posters.json";
+import Tags from "../mocks/topics.json";
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 100px;
 `;
 
-const TopPosters = [
-  {
-    title: "1"
-  },
-  {
-    title: "2"
-  },
-  {
-    title: "3"
-  },
-  {
-    title: "4"
-  }
-]
-
 const Main = () => {
-  let navigate = useNavigate();
-
   return (
-    <div>
-      <Carousel style={{
-        width: "100%",
-        height: "50vh"
-      }} autoplay>
-        {TopPosters.map((poster, index) => {
-          return (
-            <div key={index} onClick={() => navigate("/poster")}>
-              <Poster>
-                {poster.title}
-              </Poster>
-            </div>
-          )
-        })}
-      </Carousel>
-    </div>
+    <MainContainer>
+      <Head />
+      <PostersList title={"Most important posters of the week"} posters={Posters} numberElements={6} actionButton={"navigate"}/>
+      <PostersSlider title={"Newest posters"} posters={Posters} />
+      <PosterByTopics />
+      <TagsList title={"Browse by topics"} tags={Tags} />
+    </MainContainer>
   );
 };
 
