@@ -108,6 +108,22 @@ contract PostersWithPurpose {
         return nftAddress;
     }
 
+    function getNftAddress(NftDetails memory nftDetails) private returns(address) {
+        return 
+            NFTCreator.createEdition(
+                nftDetails.name,
+                string(abi.encodePacked("PWP", Strings.toString(editionNum))),
+                MAX_UINT64,
+                0,
+                payable(nftDetails.fundsRecipient),
+                address(this),
+                defaultConfig,
+                nftDetails.description,
+                "",
+                nftDetails.imageURI
+            );
+    }
+
     function createEdition(
         NftDetails calldata nftDetails,
         bytes calldata signature
@@ -124,21 +140,8 @@ contract PostersWithPurpose {
             "Funds can only go to the creator or the DAO"
         );
 
+        address nftAddress = getNftAddress(nftDetails);
         editionNum++;
-
-        address nftAddress =
-            NFTCreator.createEdition(
-                nftDetails.name,
-                "PWP",
-                MAX_UINT64,
-                0,
-                payable(nftDetails.fundsRecipient),
-                address(this),
-                defaultConfig,
-                nftDetails.description,
-                "",
-                nftDetails.imageURI
-            );
 
         editionAddress[nftDetails.imageURI] = nftAddress;
         return nftAddress;
@@ -162,5 +165,9 @@ contract PostersWithPurpose {
         require(msg.sender == DAOAddress, "You don't have the right to update the address");
         require(newAddress != address(0), "Address shouldn't be null address");
         DAOAddress = newAddress;
+    }
+
+    function getEditionNum() external view returns (uint256) {
+        return (editionNum);
     }
 }
