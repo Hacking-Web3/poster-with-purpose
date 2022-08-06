@@ -135,6 +135,8 @@ contract PostersWithPurpose {
             "signature does not match"
         );
 
+        require(editionAddress[nftDetails.imageURI] == address(0), "Poster already exists");
+
         require(
             nftDetails.fundsRecipient == nftDetails.creator ||
                 nftDetails.fundsRecipient == DAOAddress,

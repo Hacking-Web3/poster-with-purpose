@@ -49,15 +49,14 @@ describe("PostersWithPurpose test", function () {
 
   describe("Hashing", function () {
 
-    async function createEdition(userA: SignerWithAddress, userB: SignerWithAddress, signature: string) {
+    async function createEdition(userA: SignerWithAddress, userB: SignerWithAddress, signature: string, URI: string) {
       let contractAddress = await postersWithPurpose.callStatic.createEdition(
         {
           creator: userA.address,
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: URI,
         },
         signature
       );
@@ -68,8 +67,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: URI,
         },
         signature
       );
@@ -80,6 +78,8 @@ describe("PostersWithPurpose test", function () {
 
     it("allows creating edition via signature", async function () {
       let [userA, userB] = await ethers.getSigners();
+      let image1 = "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/";
+      let image2 = "https://pbs.twimg.com/profile_images/1541920820204797952/RaMNiqHx_400x400.jpg";
 
       let postersWithPurposeDomain = {
         name: "PostersWithPurpose",
@@ -98,7 +98,7 @@ describe("PostersWithPurpose test", function () {
         presaleMerkleRoot: ethers.utils.hexlify(ethers.utils.randomBytes(32)),
       };
 
-      const signature = await userA._signTypedData(
+      const signature1 = await userA._signTypedData(
         postersWithPurposeDomain,
         {
           CreateEdition: [
@@ -114,12 +114,11 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: image1,
         }
       );
 
-      let contractAddress = await createEdition(userA, userB, signature);
+      let contractAddress = await createEdition(userA, userB, signature1, image1);
 
       let contractDeployed = new Contract(
         contractAddress,
@@ -131,7 +130,27 @@ describe("PostersWithPurpose test", function () {
       expect(await contractDeployed.name()).to.equal("collection's name");
       expect(await contractDeployed.symbol()).to.equal("PWP0");
 
-      let contractAddress2 = await createEdition(userA, userB, signature);
+      const signature2 = await userA._signTypedData(
+        postersWithPurposeDomain,
+        {
+          CreateEdition: [
+            { name: "creator", type: "address" },
+            { name: "name", type: "string" },
+            { name: "fundsRecipient", type: "address" },
+            { name: "description", type: "string" },
+            { name: "imageURI", type: "string" },
+          ],
+        },
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI: image2,
+        }
+      );
+      
+      let contractAddress2 = await createEdition(userA, userB, signature2, image2);
 
       let contractDeployed2 = new Contract(
         contractAddress2,
@@ -284,7 +303,7 @@ describe("PostersWithPurpose test", function () {
           fundsRecipient: userB.address,
           description: "collection's description",
           imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+            "https://picsum.photos/id/237/536/354",
         }
       );
 
@@ -295,7 +314,7 @@ describe("PostersWithPurpose test", function () {
           fundsRecipient: userB.address,
           description: "collection's description",
           imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+            "https://picsum.photos/id/237/536/354",
         },
         signature
       );
@@ -307,7 +326,7 @@ describe("PostersWithPurpose test", function () {
           fundsRecipient: userB.address,
           description: "collection's description",
           imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+            "https://picsum.photos/id/237/536/354",
         },
         signature
       );
