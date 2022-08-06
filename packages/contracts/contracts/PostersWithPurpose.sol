@@ -39,6 +39,7 @@ contract PostersWithPurpose {
     IZoraNFTCreator private NFTCreator;
 
     constructor(address _ZoraNFTCreatorAddress, uint256 _editionNum, uint256 _minDonation, address _DAOAddress) {
+        require(_ZoraNFTCreatorAddress != address(0) && _DAOAddress != address(0), "Invalid Address initialization");
         ZoraNFTCreatorAddress = _ZoraNFTCreatorAddress;
         NFTCreator = IZoraNFTCreator(ZoraNFTCreatorAddress);
         editionNum = _editionNum;
