@@ -9,13 +9,13 @@ import "./ERC721DropStorageV1.sol";
 contract PostersWithPurpose {
     string private constant name = "PostersWithPurpose";
     string private constant version = "1.0";
+    uint256 private minDonation;
     // TODO: Remove if not able to handle
     uint256 private editionNum;
 
     mapping(string => address) public editionAddress;
 
     uint64 MAX_UINT64 = 2*64 - 1;
-    uint104 private MIN_DONATION = 1;
 
     struct NftDetails {
         address creator;
@@ -28,16 +28,17 @@ contract PostersWithPurpose {
     bytes32 basicMerkleRoot = 0x0000000000000000000000000000000000000000000000000000000000000000;
 
     IERC721Drop.SalesConfiguration defaultConfig = IERC721Drop.SalesConfiguration(
-        MIN_DONATION, uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
+        uint104(0), uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
     );
 
     address public ZoraNFTCreatorAddress;
     IZoraNFTCreator private NFTCreator;
 
-    constructor(address _ZoraNFTCreatorAddress, uint256 _editionNum) {
+    constructor(address _ZoraNFTCreatorAddress, uint256 _editionNum, uint256 _minDonation) {
         ZoraNFTCreatorAddress = _ZoraNFTCreatorAddress;
         NFTCreator = IZoraNFTCreator(ZoraNFTCreatorAddress);
         editionNum = _editionNum;
+        minDonation = _minDonation;
     }
 
     // string private constant SALES_CONFIGURATION_SIG = "SalesConfiguration(uint104 publicSalePrice,uint32 maxSalePurchasePerAddress,uint64 publicSaleStart,uint64 publicSaleEnd,uint64 presaleStart,uint64 presaleEnd,bytes32 presaleMerkleRoot)";
@@ -88,7 +89,7 @@ contract PostersWithPurpose {
             nftAddress = createEdition(nftDetails, signature);
         }
         
-        if (msg.value > 0) {
+        if (msg.value > minDonation) {
             IERC721Drop(nftAddress).adminMint(msg.sender, 1);
         }
 
@@ -129,5 +130,15 @@ contract PostersWithPurpose {
 
         editionAddress[nftDetails.imageURI] = nftAddress;
         return nftAddress;
+    }
+
+    function getMinDonation() external view returns (uint256) {
+        return minDonation;
+    }
+
+    function updateMinDonation(uint256 newMin) external {
+        // require(msg.sender == DAOAddress, "You don't have the right");
+        require(newMin > 0, "Minimum donation can't be negative");
+        minDonation = newMin;
     }
 }

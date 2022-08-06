@@ -32,12 +32,14 @@ describe("PostersWithPurpose test", function () {
       await forkingAtBlock(14881640);
       postersWithPurpose = await PostersWithPurpose.deploy(
         NFTCreatorAddress,
-        0
+        0,
+        1
       );
 
       expect(await postersWithPurpose.ZoraNFTCreatorAddress()).to.equal(
         NFTCreatorAddress
       );
+      expect(await postersWithPurpose.getMinDonation()).to.equal(1);
     });
   });
 
@@ -210,7 +212,6 @@ describe("PostersWithPurpose test", function () {
       await createTx2.wait();
       expect(await erc721.totalSupply()).to.equal(2);
 
-      // TODO: Test that userA and userB has proper amount of tokens
       const balanceA = await erc721.balanceOf(userA.address);
       const balanceB = await erc721.balanceOf(userB.address);
 
@@ -218,4 +219,12 @@ describe("PostersWithPurpose test", function () {
       expect(balanceB).to.equal(1);
     });
   });
+
+  describe("Modification", function () {
+    it("Should modify the minimum donation OK", async function () {      
+      await postersWithPurpose.updateMinDonation(5);
+      expect(await postersWithPurpose.getMinDonation()).to.equal(5);
+    });
+  });
+
 });
