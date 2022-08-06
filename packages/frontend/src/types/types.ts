@@ -5,3 +5,7 @@ export interface IPosterCard {
     image: string;
     tags?: string[];
 }
+
+export interface IPosterCardArray {
+    posters: IPosterCard[];
+}
