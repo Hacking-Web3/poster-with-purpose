@@ -10,7 +10,7 @@ const PosterCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 `;
 
 const Image = styled.img`
@@ -68,7 +68,6 @@ const TagsContainer = styled.div`
   align-items: center;
   width: 95%;
   margin-top: 5px;
-  margin-bottom: 5px;
 `;
 
 const Tag = styled.button`

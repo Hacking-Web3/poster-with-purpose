@@ -16,7 +16,7 @@ const PostersContainer = styled.div`
 const Image = styled.img`
   object-fit: cover;
   width: 25%;
-  height: 100%;
+  height: auto;
 `;
 
 const CardByTopics = (posters: IPosterCardArray) => {
