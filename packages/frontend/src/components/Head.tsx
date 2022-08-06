@@ -49,7 +49,7 @@ const Head = () => {
     <HeadContainer>
       <TextContainer>
         <Title>This is 24/7 live protest page</Title>
-        <Description>You can download any poster for print and print it any size you wish. You can also support artst by sending some donatins and you get NFT</Description>
+        <Description>You can download any poster for print and print it any size you wish. You can also support arts by sending some donations and you get NFT.</Description>
       </TextContainer>
       <Image src="assets/head.png" alt="Head" />
     </HeadContainer>
