@@ -210,4 +210,5 @@ interface IERC721Drop {
     function isAdmin(address user) external view returns (bool);
 
     function name() external view returns (string memory);
+    function symbol() external view returns (string memory);
 }

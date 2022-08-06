@@ -1,3 +1,4 @@
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
 import { Contract } from "ethers";
 import { ethers, network } from "hardhat";
@@ -42,10 +43,41 @@ describe("PostersWithPurpose test", function () {
         NFTCreatorAddress
       );
       expect(await postersWithPurpose.getMinDonation()).to.equal(3);
+      expect(await postersWithPurpose.getEditionNum()).to.equal(0);
     });
   });
 
   describe("Hashing", function () {
+
+    async function createEdition(userA: SignerWithAddress, userB: SignerWithAddress, signature: string) {
+      let contractAddress = await postersWithPurpose.callStatic.createEdition(
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        },
+        signature
+      );
+
+      let createTx = await postersWithPurpose.connect(userB).createEdition(
+        {
+          creator: userA.address,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+        },
+        signature
+      );
+      await createTx.wait();
+
+      return contractAddress;
+    } 
+
     it("allows creating edition via signature", async function () {
       let [userA, userB] = await ethers.getSigners();
 
@@ -87,30 +119,7 @@ describe("PostersWithPurpose test", function () {
         }
       );
 
-      let contractAddress = await postersWithPurpose.callStatic.createEdition(
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
-        },
-        signature
-      );
-
-      let createTx = await postersWithPurpose.connect(userB).createEdition(
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
-        },
-        signature
-      );
-      await createTx.wait();
+      let contractAddress = await createEdition(userA, userB, signature);
 
       let contractDeployed = new Contract(
         contractAddress,
@@ -118,10 +127,18 @@ describe("PostersWithPurpose test", function () {
         userA
       );
 
-      let DAOAddress = await postersWithPurpose.getDAOAddress();
-
-      expect(DAOAddress).to.equal(userB.address);
+      expect(await postersWithPurpose.getDAOAddress()).to.equal(userB.address);
       expect(await contractDeployed.name()).to.equal("collection's name");
+      expect(await contractDeployed.symbol()).to.equal("PWP0");
+
+      let contractAddress2 = await createEdition(userA, userB, signature);
+
+      let contractDeployed2 = new Contract(
+        contractAddress2,
+        IERC721Drop__factory.abi,
+        userA
+      );
+      expect(await contractDeployed2.symbol()).to.equal("PWP1");
     });
   });
 
