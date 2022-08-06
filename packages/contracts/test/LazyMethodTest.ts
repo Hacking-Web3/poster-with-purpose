@@ -63,48 +63,39 @@ describe("PostersWithPurpose test", function () {
         {
           CreateEdition: [
             { name: "creator", type: "address" },
-            { name: "editName", type: "string" },
-            { name: "royaltyBPS", type: "uint16" },
-            { name: "defaultAdmin", type: "address" },
-            { name: "saleConfig", type: "SalesConfiguration" },
-          ],
-          SalesConfiguration: [
-            { name: "publicSalePrice", type: "uint104" },
-            { name: "maxSalePurchasePerAddress", type: "uint32" },
-            { name: "publicSaleStart", type: "uint64" },
-            { name: "publicSaleEnd", type: "uint64" },
-            { name: "presaleStart", type: "uint64" },
-            { name: "presaleEnd", type: "uint64" },
-            { name: "presaleMerkleRoot", type: "bytes32" },
-          ],
+            { name: "name", type: "string" },
+            { name: "fundsRecipient", type: "address" },
+            { name: "description", type: "string" },
+            { name: "imageURI", type: "string" },
+          ]
         },
         {
           creator: userA.address,
-          editName: "1",
-          royaltyBPS: 100,
-          defaultAdmin: userA.address,
-          saleConfig,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
         }
       );
 
       let contractAddress = await postersWithPurpose.callStatic.createEdition(
         {
-          editName: "1",
           creator: userA.address,
-          royaltyBPS: 100,
-          defaultAdmin: userA.address,
-          saleConfig,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
         },
         signature
       );
 
       let createTx = await postersWithPurpose.connect(userB).createEdition(
         {
-          editName: "1",
           creator: userA.address,
-          royaltyBPS: 100,
-          defaultAdmin: userA.address,
-          saleConfig,
+          name: "collection's name",
+          fundsRecipient: userB.address,
+          description: "collection's description",
+          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
         },
         signature
       );
@@ -116,7 +107,7 @@ describe("PostersWithPurpose test", function () {
         userA
       );
 
-      expect(await contractDeployed.name()).to.equal("edition 1");
+      expect(await contractDeployed.name()).to.equal("collection's name");
     });
   });
 });
