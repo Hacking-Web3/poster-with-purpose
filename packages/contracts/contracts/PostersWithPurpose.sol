@@ -8,7 +8,10 @@ import "./IZoraNFTCreator.sol";
 contract PostersWithPurpose {
     string private constant name = "PostersWithPurpose";
     string private constant version = "1.0";
+    // TODO: Remove if not able to handle
     uint256 private editionNum;
+
+    uint64 MAX_UINT64 = 2*64 - 1;
 
     struct NftDetails {
         address creator;
@@ -17,6 +20,12 @@ contract PostersWithPurpose {
         string description;
         string imageURI;
     }
+
+    bytes32 basicMerkleRoot = 0x0000000000000000000000000000000000000000000000000000000000000000;
+
+    IERC721Drop.SalesConfiguration defaultConfig = IERC721Drop.SalesConfiguration(
+        uint104(0), uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
+    );
 
     address public ZoraNFTCreatorAddress;
     IZoraNFTCreator private NFTCreator;
@@ -28,8 +37,8 @@ contract PostersWithPurpose {
     }
 
     // string private constant SALES_CONFIGURATION_SIG = "SalesConfiguration(uint104 publicSalePrice,uint32 maxSalePurchasePerAddress,uint64 publicSaleStart,uint64 publicSaleEnd,uint64 presaleStart,uint64 presaleEnd,bytes32 presaleMerkleRoot)";
-    string private constant CREATE_EDITION_SIG =
-        "CreateEdition(address creator,string name,address fundsRecipient,string description,string imageURI)";
+    bytes32 private constant CREATE_EDITION_TYPEHASH =
+        keccak256("CreateEdition(address creator,string name,address fundsRecipient,string description,string imageURI)");
 
     bytes32 private domainSeparator =
         keccak256(
@@ -45,24 +54,24 @@ contract PostersWithPurpose {
         );
 
     function hashCreateEdition(
-        bytes32 domainSeparator,
         NftDetails calldata nftDetails
-    ) private pure returns (bytes32 hash) {
+    ) private view returns (bytes32 hash) {
         hash = keccak256(
             abi.encodePacked(
                 "\x19\x01",
                 domainSeparator,
                 keccak256(
                     abi.encode(
-                        CREATE_EDITION_SIG,
+                        CREATE_EDITION_TYPEHASH,
+                        nftDetails.creator,
                         keccak256(bytes(nftDetails.name)),
                         nftDetails.fundsRecipient,
-                        nftDetails.description,
-                        nftDetails.imageURI
+                        keccak256(bytes(nftDetails.description)),
+                        keccak256(bytes(nftDetails.imageURI))
                     )
                 )
             )
-        );
+       );
     }
 
     function createEdition(
@@ -71,52 +80,26 @@ contract PostersWithPurpose {
     ) external returns (address) {
         require(
             ECDSA.recover(
-                hashCreateEdition(domainSeparator, nftDetails),
+                hashCreateEdition(nftDetails),
                 signature
             ) == nftDetails.creator,
             "signature does not match"
         );
-        uint64 MaxValue = 18446744073709551615;
 
         editionNum++;
 
         return
             NFTCreator.createEdition(
                 nftDetails.name,
-                createSymbol(),
-                MaxValue,
+                "PWP",
+                MAX_UINT64,
                 0,
                 payable(nftDetails.fundsRecipient),
                 address(this),
-                createSalesConfig(),
+                defaultConfig,
                 nftDetails.description,
                 "",
                 nftDetails.imageURI
             );
-    }
-
-    function createSalesConfig()
-        private
-        returns (IERC721Drop.SalesConfiguration memory)
-    {
-         IERC721Drop.SalesConfiguration memory config;
-
-        uint64 maxTimeStamp = 99999999999999;
-        bytes32 basicMerkleRoot = 0x0000000000000000000000000000000000000000000000000000000000000000;
-
-        config.publicSalePrice = uint104(0);
-        config.maxSalePurchasePerAddress = uint32(0);
-        config.publicSaleStart = uint64(0);
-        config.publicSaleEnd = maxTimeStamp;
-        config.presaleStart = uint64(0);
-        config.presaleEnd = uint64(0);
-        config.presaleMerkleRoot = basicMerkleRoot;
-        return config;
-    }
-
-    function createSymbol() private returns (string memory) {
-        string memory baseSymbol = "PWP";
-        return
-            string(abi.encodePacked(baseSymbol, Strings.toString(editionNum)));
     }
 }

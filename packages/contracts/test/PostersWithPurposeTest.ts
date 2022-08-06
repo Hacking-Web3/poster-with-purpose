@@ -29,7 +29,10 @@ describe("PostersWithPurpose test", function () {
         "PostersWithPurpose"
       );
       await forkingAtBlock(14881640);
-      postersWithPurpose = await PostersWithPurpose.deploy(NFTCreatorAddress);
+      postersWithPurpose = await PostersWithPurpose.deploy(
+        NFTCreatorAddress,
+        0
+      );
 
       expect(await postersWithPurpose.ZoraNFTCreatorAddress()).to.equal(
         NFTCreatorAddress
@@ -41,7 +44,7 @@ describe("PostersWithPurpose test", function () {
     it("allows creating edition via signature", async function () {
       let [userA, userB] = await ethers.getSigners();
 
-      let lazyMethodDomain = {
+      let postersWithPurposeDomain = {
         name: "PostersWithPurpose",
         version: "1.0",
         chainId: (await ethers.provider.getNetwork()).chainId,
@@ -59,7 +62,7 @@ describe("PostersWithPurpose test", function () {
       };
 
       const signature = await userA._signTypedData(
-        lazyMethodDomain,
+        postersWithPurposeDomain,
         {
           CreateEdition: [
             { name: "creator", type: "address" },
@@ -67,14 +70,15 @@ describe("PostersWithPurpose test", function () {
             { name: "fundsRecipient", type: "address" },
             { name: "description", type: "string" },
             { name: "imageURI", type: "string" },
-          ]
+          ],
         },
         {
           creator: userA.address,
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
         }
       );
 
@@ -84,7 +88,8 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
         },
         signature
       );
@@ -95,7 +100,8 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI: "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/"
+          imageURI:
+            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
         },
         signature
       );
