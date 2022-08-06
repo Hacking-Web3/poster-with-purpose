@@ -1,18 +1,30 @@
-import { ethers } from "hardhat";
+import { ethers, network } from "hardhat";
+import { ZORA_NFT_CREATOR } from "../constants";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  const { chainId } = network.config;
+  if (!chainId) {
+    console.error("No chain id is specified");
+    return;
+  }
+  const ZoraNFTCreatorAddress = ZORA_NFT_CREATOR[chainId];
+  if (!ZoraNFTCreatorAddress) {
+    console.error("No nft creator address is known for this network");
+    return;
+  }
 
-  const lockedAmount = ethers.utils.parseEther("1");
+  const PostersWithPurpose = await ethers.getContractFactory(
+    "PostersWithPurpose"
+  );
+  const postersWithPurpose = await PostersWithPurpose.deploy(
+    ZoraNFTCreatorAddress,
+    0,
+    1
+  );
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  await postersWithPurpose.deployed();
 
-  await lock.deployed();
-
-  console.log("Lock with 1 ETH deployed to:", lock.address);
+  console.log("Posters With Purpose deployed:", postersWithPurpose.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

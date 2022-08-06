@@ -26,6 +26,7 @@ describe("PostersWithPurpose test", function () {
 
   describe("Deployment", function () {
     it("Should deploy the contract and set zora nft creator address", async function () {
+      let [userA, userB] = await ethers.getSigners();
       const PostersWithPurpose = await ethers.getContractFactory(
         "PostersWithPurpose"
       );
@@ -33,7 +34,8 @@ describe("PostersWithPurpose test", function () {
       postersWithPurpose = await PostersWithPurpose.deploy(
         NFTCreatorAddress,
         0,
-        3
+        3,
+        userB.getAddress()
       );
 
       expect(await postersWithPurpose.ZoraNFTCreatorAddress()).to.equal(
@@ -116,6 +118,9 @@ describe("PostersWithPurpose test", function () {
         userA
       );
 
+      let DAOAddress = await postersWithPurpose.getDAOAddress();
+
+      expect(DAOAddress).to.equal(userB.address);
       expect(await contractDeployed.name()).to.equal("collection's name");
     });
   });
@@ -307,10 +312,44 @@ describe("PostersWithPurpose test", function () {
   });
 
   describe("Modification", function () {
-    it("Should modify the minimum donation OK", async function () {      
-      await postersWithPurpose.updateMinDonation(5);
+    it("Should modify the minimum donation OK", async function () {
+      let [userA, userB] = await ethers.getSigners();
+      await postersWithPurpose.connect(userB).updateMinDonation(5);
       expect(await postersWithPurpose.getMinDonation()).to.equal(5);
     });
   });
 
+  describe("modification of DAOAddress", function () {
+    it("Updates the DAO Address OK", async function () {
+      let [userA, userB] = await ethers.getSigners();
+
+      let DAOAddress = await postersWithPurpose.getDAOAddress();
+      expect(DAOAddress).to.equal(userB.address);
+
+      await postersWithPurpose.connect(userB).updateDAOAddress(userA.address);
+
+      let newDAOAddress = await postersWithPurpose.getDAOAddress();
+      expect(newDAOAddress).to.equal(userA.address);
+    });
+
+    it("Updates the DAOAddress KO, no right", async function () {
+      let [userA, userB] = await ethers.getSigners();
+
+      let DAOAddress = await postersWithPurpose.getDAOAddress();
+      expect(DAOAddress).to.equal(userA.address);
+
+      await expect(postersWithPurpose.connect(userB).updateDAOAddress(userA.address)).to.be.revertedWith("You don't have the right to update the address");
+    });
+
+    it("Updates the DAOAddress KO, null address", async function () {
+      let [userA, userB] = await ethers.getSigners();
+
+      let DAOAddress = await postersWithPurpose.getDAOAddress();
+      expect(DAOAddress).to.equal(userA.address);
+
+      let nullAddress = "0x0000000000000000000000000000000000000000";
+      await expect(postersWithPurpose.connect(userA).updateDAOAddress(nullAddress)).to.be.revertedWith("Address shouldn't be null address");
+    });
+
+  });
 });

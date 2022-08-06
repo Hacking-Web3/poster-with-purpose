@@ -12,6 +12,8 @@ contract PostersWithPurpose {
     uint256 private minDonation;
     // TODO: Remove if not able to handle
     uint256 private editionNum;
+    
+    address public DAOAddress;
 
     mapping(string => address) public editionAddress;
 
@@ -26,7 +28,8 @@ contract PostersWithPurpose {
         string imageURI;
     }
 
-    bytes32 basicMerkleRoot = 0x0000000000000000000000000000000000000000000000000000000000000000;
+    bytes32 basicMerkleRoot =
+        0x0000000000000000000000000000000000000000000000000000000000000000;
 
     IERC721Drop.SalesConfiguration defaultConfig = IERC721Drop.SalesConfiguration(
         MAX_UINT64, uint32(0), uint64(0), MAX_UINT64, uint64(0), uint64(0), basicMerkleRoot
@@ -35,16 +38,18 @@ contract PostersWithPurpose {
     address public ZoraNFTCreatorAddress;
     IZoraNFTCreator private NFTCreator;
 
-    constructor(address _ZoraNFTCreatorAddress, uint256 _editionNum, uint256 _minDonation) {
+    constructor(address _ZoraNFTCreatorAddress, uint256 _editionNum, uint256 _minDonation, address _DAOAddress) {
         ZoraNFTCreatorAddress = _ZoraNFTCreatorAddress;
         NFTCreator = IZoraNFTCreator(ZoraNFTCreatorAddress);
         editionNum = _editionNum;
         minDonation = _minDonation;
+        DAOAddress = _DAOAddress;
     }
 
-    // string private constant SALES_CONFIGURATION_SIG = "SalesConfiguration(uint104 publicSalePrice,uint32 maxSalePurchasePerAddress,uint64 publicSaleStart,uint64 publicSaleEnd,uint64 presaleStart,uint64 presaleEnd,bytes32 presaleMerkleRoot)";
     bytes32 private constant CREATE_EDITION_TYPEHASH =
-        keccak256("CreateEdition(address creator,string name,address fundsRecipient,string description,string imageURI)");
+        keccak256(
+            "CreateEdition(address creator,string name,address fundsRecipient,string description,string imageURI)"
+        );
 
     bytes32 private domainSeparator =
         keccak256(
@@ -59,9 +64,11 @@ contract PostersWithPurpose {
             )
         );
 
-    function hashCreateEdition(
-        NftDetails calldata nftDetails
-    ) private view returns (bytes32 hash) {
+    function hashCreateEdition(NftDetails calldata nftDetails)
+        private
+        view
+        returns (bytes32 hash)
+    {
         hash = keccak256(
             abi.encodePacked(
                 "\x19\x01",
@@ -77,7 +84,7 @@ contract PostersWithPurpose {
                     )
                 )
             )
-       );
+        );
     }
 
     function mintNft(
@@ -106,11 +113,15 @@ contract PostersWithPurpose {
         bytes calldata signature
     ) public returns (address) {
         require(
-            ECDSA.recover(
-                hashCreateEdition(nftDetails),
-                signature
-            ) == nftDetails.creator,
+            ECDSA.recover(hashCreateEdition(nftDetails), signature) ==
+                nftDetails.creator,
             "signature does not match"
+        );
+
+        require(
+            nftDetails.fundsRecipient == nftDetails.creator ||
+                nftDetails.fundsRecipient == DAOAddress,
+            "Funds can only go to the creator or the DAO"
         );
 
         editionNum++;
@@ -138,8 +149,18 @@ contract PostersWithPurpose {
     }
 
     function updateMinDonation(uint256 newMin) external {
-        // require(msg.sender == DAOAddress, "You don't have the right");
+        require(msg.sender == DAOAddress, "You don't have the right");
         require(newMin > 0, "Minimum donation can't be negative");
         minDonation = newMin;
+    }
+
+    function getDAOAddress() public view returns (address) {
+        return (DAOAddress);
+    }
+
+    function updateDAOAddress(address newAddress) external {
+        require(msg.sender == DAOAddress, "You don't have the right to update the address");
+        require(newAddress != address(0), "Address shouldn't be null address");
+        DAOAddress = newAddress;
     }
 }

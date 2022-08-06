@@ -1,5 +1,6 @@
 import { useParams } from 'react-router';
 import Posters from '../mocks/posters.json';
+import Users from '../mocks/users.json';
 import { IPosterCard } from '../types/types';
 import PosterPresentation from '../components/PosterPresentation';
 import TagsList from '../components/TagsList';
@@ -29,9 +30,9 @@ const Poster = () => {
         poster &&
         <PresentationContainer>
           <PosterPresentation {...poster} />
-          <ProofOfUse title={"Proof of use (Todo)"} posters={Posters}/>
+          <ProofOfUse title={"Proof of use (Todo)"} posters={Posters} />
           <TagsList title={"Topics:"} titlePosition={"left"} tags={poster.tags} />
-          <BackersList />
+          <BackersList users={Users} />
         </PresentationContainer>
       }
     </div>
