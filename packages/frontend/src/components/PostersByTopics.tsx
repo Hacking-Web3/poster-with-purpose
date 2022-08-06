@@ -11,10 +11,13 @@ const NewPosterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  align-content: center;
   padding-top: 100px;
   padding-bottom: 100px;
   background-color: #F5F5F5;
   padding-left: 50px;
+  padding-right: 50px;
 `;
 
 const Title = styled.h1`
@@ -27,7 +30,7 @@ const Title = styled.h1`
 
 const CustomSlider = styled(Slider)`
   background-color: rgba(145, 225, 254, 0.35);
-  width: 100%;
+  width: 80%;
   padding-top: 50px;
   height: 100%;
   .slick-next,
@@ -43,7 +46,8 @@ const CustomSlider = styled(Slider)`
   }
 
   .slick-dots {
-    left: -33%;
+    width: 80%;
+    left: -20%;
   }
   
   .ft-slick__dots--custom {
@@ -63,6 +67,8 @@ const CustomSlider = styled(Slider)`
 `
 
 const TopicTitle = styled.h1`
+  width: 80%;
+  margin-left: 10%;
   color: black;
   font-weight: bold;
   font-size: 18px;
