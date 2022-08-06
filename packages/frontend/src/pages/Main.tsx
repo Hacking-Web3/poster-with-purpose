@@ -1,9 +1,12 @@
 import Head from "../components/Head";
-import ImportantPosters from '../components/ImportantPosters';
-import NewPosters from '../components/NewPosters';
+import PostersSlider from '../components/PosterSlider';
 import PosterByTopics from '../components/PostersByTopics';
 import BrowseByTopics from '../components/BrowseByTopics';
+import PostersList from '../components/PosterList';
 import styled from "styled-components";
+
+import Posters from "../mocks/posters.json";
+import Tags from "../mocks/topics.json";
 
 const MainContainer = styled.div`
   display: flex;
@@ -20,10 +23,10 @@ const Main = () => {
   return (
     <MainContainer>
       <Head />
-      <ImportantPosters />
-      <NewPosters />
+      <PostersList title={"Most important posters of the week"} posters={Posters} numberElements={6} actionButton={"navigate"}/>
+      <PostersSlider title={"Newest posters"} posters={Posters} />
       <PosterByTopics />
-      <BrowseByTopics />
+      <BrowseByTopics title={"Browse by topics"} tags={Tags} />
     </MainContainer>
   );
 };
