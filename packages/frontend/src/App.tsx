@@ -19,7 +19,7 @@ import SatoshiRegular from "/assets/fonts/Satoshi-Regular.otf";
 const theme = {};
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [chain.rinkeby],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
