@@ -40,8 +40,9 @@ const Description = styled.p`
 
 const Image = styled.img`
   object-fit: cover;
-  width: 70%;
+  width: 55%;
   height: auto;
+  margin-right: 80px;
 `;
 
 const Head = () => {
