@@ -31,11 +31,11 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  width: 70%; 
+  width: 70%;
   color: black;
   margin: 0px 00px;
   font-size: 28px;
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
 `;
 
 const Image = styled.img`
@@ -49,8 +49,11 @@ const Head = () => {
   return (
     <HeadContainer>
       <TextContainer>
-        <Title>This is 24/7 live protest page</Title>
-        <Description>You can download any poster for print and print it any size you wish. You can also support arts by sending some donations and you get NFT.</Description>
+        <Title>Meaningful art changing the world</Title>
+        <Description>
+          You can download any poster and print it any size you wish. You can
+          also support artst by sending some donatins and you will get NFT
+        </Description>
       </TextContainer>
       <Image src="/assets/head.png" alt="Head" />
     </HeadContainer>
