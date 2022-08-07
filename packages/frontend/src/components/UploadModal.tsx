@@ -94,6 +94,16 @@ const UploadModal = () => {
   useEffect(() => {
     if (sig && !published) {
       setPublished(true);
+      console.log("RESULLT");
+      console.log(
+        cid,
+        `${author}. ${title}. ${year}, ${country}`,
+        description,
+        address || "",
+        0,
+        selectedTags,
+        sig
+      );
       writePosterInfo(
         cid,
         `${author}. ${title}. ${year}, ${country}`,
@@ -192,7 +202,11 @@ const UploadModal = () => {
       >
         <Form.Item name="imageURI">
           {imageUrl ? (
-            <img src={process.env.PUBLIC_URL + imageUrl} alt="poster" style={{ width: "100%" }} />
+            <img
+              src={process.env.PUBLIC_URL + imageUrl}
+              alt="poster"
+              style={{ width: "100%" }}
+            />
           ) : (
             <Upload
               name="avatar"

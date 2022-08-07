@@ -5,6 +5,7 @@ export interface IPosterCard {
   description: string;
   image: string;
   tags: string[];
+  signature?: string;
 }
 
 export interface IPostersList {
@@ -39,4 +40,3 @@ export interface IModalInformation {
   isModalVisible: boolean;
   setIsModalVisible: (isModalVisible: boolean) => void;
 }
-
