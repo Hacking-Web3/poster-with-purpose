@@ -9,10 +9,12 @@ import {
 } from "antd/lib/upload";
 import { useAtom } from "jotai";
 import { NFTStorage } from "nft.storage";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
-import { useAccount } from "wagmi";
+import { useAccount, useNetwork, useSignTypedData } from "wagmi";
 import { addPopupVisible } from "../state/addPoster/atoms";
+import { DAO_ADDRESS, POSTERS_WITH_PURPOSE } from "contracts/constants";
+import { getSignatureDetails } from "../utils/getSignatureDetails";
 
 const UploadingRules = styled.span`
   font-size: 11px;
@@ -20,6 +22,38 @@ const UploadingRules = styled.span`
 
   color: #83a380;
 `;
+
+const domain = {
+  name: "Ether Mail",
+  version: "1",
+  chainId: 4,
+  verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+};
+
+// The named list of all type definitions
+const types = {
+  Person: [
+    { name: "name", type: "string" },
+    { name: "wallet", type: "address" },
+  ],
+  Mail: [
+    { name: "from", type: "Person" },
+    { name: "to", type: "Person" },
+    { name: "contents", type: "string" },
+  ],
+};
+
+const value = {
+  from: {
+    name: "Cow",
+    wallet: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826",
+  },
+  to: {
+    name: "Bob",
+    wallet: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB",
+  },
+  contents: "Hello, Bob!",
+};
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -49,12 +83,37 @@ const tagsData = ["Movies", "Books", "Music", "Sports"];
 
 const UploadModal = () => {
   const [form] = Form.useForm();
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
+  const [country, setCountry] = useState("");
+  const [cid, setCID] = useState("");
+  const [year, setYear] = useState("");
   const [loading, setLoading] = useState(false);
   const [isCreator, setIsCreator] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
   const [modalVisible, setModalVisibility] = useAtom(addPopupVisible);
   const [selectedTags, setSelectedTags] = useState<string[]>(["Books"]);
   const { address } = useAccount();
+  const { chain } = useNetwork();
+  const { domain, types } = getSignatureDetails(chain?.id || 1);
+  const value = {
+    creator: address,
+    name: `${author}. ${title}. ${year}, ${country}`,
+    fundsRecipient: isCreator ? address : DAO_ADDRESS[chain?.id || 1],
+    description,
+    imageURI: `ipfs://${cid}`,
+  };
+  const { data, isSuccess, signTypedData } = useSignTypedData({
+    domain,
+    types,
+    value,
+  });
+
+  if (isSuccess && data) {
+    // TODO: Push to firebase
+  }
+
   const handleTagsChange = (tag: string, checked: boolean) => {
     const nextSelectedTags = checked
       ? [...selectedTags, tag]
@@ -92,12 +151,35 @@ const UploadModal = () => {
     });
     client.storeBlob(some.file).then((cid: string) => {
       some.file.cid = cid;
+      setCID(cid);
       some.onSuccess(cid);
     });
   };
 
   const onSubmit = (form: any) => {
-    console.log(form);
+    if (chain) {
+      signTypedData();
+    }
+  };
+
+  const handleFieldsChange = (changedFields: any, allFields: any) => {
+    for (const field of changedFields) {
+      if (field.name.toString() === "title") {
+        setTitle(field.value);
+      }
+      if (field.name.toString() === "author") {
+        setAuthor(field.value);
+      }
+      if (field.name.toString() === "year") {
+        setYear(field.value);
+      }
+      if (field.name.toString() === "country") {
+        setCountry(field.value);
+      }
+      if (field.name.toString() === "description") {
+        setDescription(field.value);
+      }
+    }
   };
 
   return (
@@ -113,6 +195,7 @@ const UploadModal = () => {
         form={form}
         layout="vertical"
         onFinish={onSubmit}
+        onFieldsChange={handleFieldsChange}
         initialValues={{ fundsRecipient: address }}
       >
         <Form.Item name="imageURI">
