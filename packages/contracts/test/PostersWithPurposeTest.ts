@@ -203,6 +203,9 @@ describe("PostersWithPurpose test", function () {
         }
       );
 
+      let prevBalanceA = await userA.getBalance();
+      let prevBalanceB = await userB.getBalance();
+
       let contractAddress = await postersWithPurpose.callStatic.mintNft(
         {
           creator: userA.address,
@@ -229,6 +232,12 @@ describe("PostersWithPurpose test", function () {
         { value: ethers.utils.parseEther("0.001") }
       );
       await createTx.wait();
+
+      let postBalanceA = await userA.getBalance();
+      let postBalanceB = await userB.getBalance();
+
+      expect(prevBalanceA).to.be.greaterThan(postBalanceA);
+      expect(prevBalanceB).to.be.lessThan(postBalanceB);
 
       let contractDeployed = new Contract(
         contractAddress,
