@@ -33,3 +33,9 @@ export interface IUser {
 export interface IUsersList {
     users: IUser[];
 }
+
+export interface IModalInformation {
+    poster?: IPosterCard;
+    isModalVisible: boolean;
+    setIsModalVisible: (isModalVisible: boolean) => void;
+}

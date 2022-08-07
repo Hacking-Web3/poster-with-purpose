@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./App.css";
 import {
@@ -11,7 +11,7 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { ThemeProvider } from "styled-components";
 import routes from "./routes";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, useLocation } from "react-router-dom";
 import GlobalStyle from "./globalStyles";
 
 import SatoshiRegular from "/assets/fonts/Satoshi-Regular.otf";
@@ -34,6 +34,15 @@ const wagmiClient = createClient({
   provider,
 });
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   const routing = useRoutes(routes);
 
@@ -50,6 +59,7 @@ function App() {
       >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <ScrollToTop />
           {routing}
         </ThemeProvider>
       </RainbowKitProvider>

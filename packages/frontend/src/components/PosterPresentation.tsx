@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { IPosterCard } from "./../types/types";
-import Tag from "./common/Tag";
+import ModalPrintPoster from "./ModalPrintPoster";
+import ModalSupport from "./ModalSupport";
+import { useState } from "react";
 
 const PosterPresentationContainer = styled.div`
     width: 100%;
@@ -87,20 +89,25 @@ const Stats = styled.p`
 
 const PosterPresentation = (poster: IPosterCard) => {
   let navigate = useNavigate();
+  const [isDownloadModalVisible, setIsDownloadModalVisible] = useState(false);
+  const [isSupportModalVisible, setIsSupportModalVisible] = useState(false);
 
   return (
     <PosterPresentationContainer>
+      <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
+      <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
+
       <Image src={poster.image} alt="Head" />
       <Author>{poster.author}</Author>
       <Title>{poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonStatsContainer>
         <ButtonStatsDivider>
-          <Button>Print</Button>
+          <Button onClick={() => setIsDownloadModalVisible(true)} >Print</Button>
           <Stats>3987 u. total printed</Stats>
         </ButtonStatsDivider>
         <ButtonStatsDivider>
-          <Button style={{ marginLeft: "10px" }}>Support author</Button>
+          <Button onClick={() => setIsSupportModalVisible(true)} style={{ marginLeft: "10px" }}>Support author</Button>
           <Stats>348 times supported</Stats>
           <Stats>(5.4 ETH)</Stats>
         </ButtonStatsDivider>

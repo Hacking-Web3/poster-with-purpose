@@ -82,8 +82,8 @@ const Footer = () => {
     <FooterContent>
       <FooterContainer>
         <FooterContainer>
-          <FooterItem><Link href="">GitHub Link</Link></FooterItem>
-          <FooterItem><Link href="">Privacy Policy</Link></FooterItem>
+          <FooterItem><Link href="https://github.com/Hacking-Web3/poster-with-purpose">GitHub Link</Link></FooterItem>
+          <FooterItem><Link>Privacy Policy</Link></FooterItem>
         </FooterContainer>
         <FooterContainer>
           <FooterItem><BlackText>2022</BlackText></FooterItem>
