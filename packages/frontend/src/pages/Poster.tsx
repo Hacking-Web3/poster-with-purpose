@@ -52,6 +52,7 @@ const Poster = () => {
       author: val.creator,
       title: val.title,
       description: val.description,
+      signature: val.signature,
     })) || [];
 
   const poster = posters.find((p: IPosterCard) => p.id === id);
