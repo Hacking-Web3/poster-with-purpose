@@ -1,0 +1,11 @@
+{
+  "name": "pwp-ethglobal",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "repository": "git@github.com:Hacking-Web3/poster-with-purpose.git"
+}
