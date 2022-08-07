@@ -84,6 +84,16 @@ QR code, link, feel free to connect if you like the idea and want to work furthe
 We want to create a platform that would be used by creatives to express their views on things currently happening in the world, visitors would be able to reflect by printing posters, putting them on the walls, in the streets and other environments. Impressions that each creation would be generating would be used as curation mechanism, thus we would be able to display what’s currently the most “hot” poster/idea that attracts the attention leading the platform to be a kind of live protest page 24/7
 
 ---
+## The team 🤝🏽
+---
+
+-----------Discord/Telegram-----------  
+*__Alina__* : Alina Loseva#0890 / @  
+*__Igor__* : Igor Line#5073 / @igorline  
+*__Hugo__* : SpookyWeasel#2717 / @  
+*_Leon_* : Leon DUCASSE#3082 / @lndcss
+
+---
 ## Mockups 📸
 ---
 ### __Landing Page__
