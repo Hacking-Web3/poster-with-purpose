@@ -1,7 +1,7 @@
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Form, message, Upload } from "antd";
 import Modal from "./common/Modal";
-import { IModalInformation } from '../types/types';
+import { IModalInformation } from "../types/types";
 import {
   RcFile,
   UploadChangeParam,
@@ -11,7 +11,6 @@ import {
 import { NFTStorage } from "nft.storage";
 import { useState } from "react";
 import { useAccount } from "wagmi";
-
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -36,7 +35,10 @@ const beforeUpload = async (file: RcFile) => {
   return isJpgOrPng && isLt40M;
 };
 
-const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformation) => {
+const ModalUploadProof = ({
+  isModalVisible,
+  setIsModalVisible,
+}: IModalInformation) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
@@ -80,9 +82,9 @@ const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformati
     <Modal
       isModalVisible={isModalVisible}
       setIsModalVisible={setIsModalVisible}
-      height={'35vh'}
-      width={'40vh'}
-      overflow={'hidden'}
+      height={"35vh"}
+      width={"40vh"}
+      overflow={"hidden"}
       title={"Upload a poster"}
     >
       <Form
@@ -104,7 +106,7 @@ const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformati
             style={{ width: 284 }}
           >
             {imageUrl ? (
-              <img src={process.env.PUBLIC_URL + imageUrl} alt="avatar" style={{ width: "100%" }} />
+              <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
             ) : (
               uploadButton
             )}
@@ -118,5 +120,5 @@ const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformati
       </Form>
     </Modal>
   );
-}
+};
 export default ModalUploadProof;

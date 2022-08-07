@@ -62,7 +62,7 @@ const Card = (poster: IPosterCard) => {
       />
       <Image
         onClick={() => navigate("/poster/" + poster.id)}
-        src={process.env.PUBLIC_URL + poster.image}
+        src={poster.image}
         alt="Head"
       />
       <TimeStamp>A day ago</TimeStamp>

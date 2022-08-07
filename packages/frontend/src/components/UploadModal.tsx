@@ -202,11 +202,7 @@ const UploadModal = () => {
       >
         <Form.Item name="imageURI">
           {imageUrl ? (
-            <img
-              src={process.env.PUBLIC_URL + imageUrl}
-              alt="poster"
-              style={{ width: "100%" }}
-            />
+            <img src={imageUrl} alt="poster" style={{ width: "100%" }} />
           ) : (
             <Upload
               name="avatar"

@@ -5,14 +5,17 @@ import ModalSupport from "./ModalSupport";
 import { useState } from "react";
 import ProfileTag from "./common/ProfileTag";
 import Button from "./common/Button";
-import { TwitterOutlined, InstagramOutlined } from "@ant-design/icons/lib/icons/";
+import {
+  TwitterOutlined,
+  InstagramOutlined,
+} from "@ant-design/icons/lib/icons/";
 
 const ProfilePresentationContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
 `;
 
 const ProfilePicture = styled.img`
@@ -23,7 +26,7 @@ const ProfilePicture = styled.img`
 `;
 
 const Author = styled.h1`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 35px;
@@ -31,7 +34,7 @@ const Author = styled.h1`
 `;
 
 const Description = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -51,13 +54,13 @@ const ButtonStatsContainer = styled.div`
 `;
 
 const Stats = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   text-align: center;
   text-transform: uppercase;
-  color: #72748D
+  color: #72748d;
 `;
 
 const Social = styled.div`
@@ -74,18 +77,18 @@ const Social = styled.div`
 const SocialButton = styled.button`
   padding: 1% 5%;
   background: #transparent;
-  background: #FFFFFF;
-  border: 1px solid #AFCAAC;
+  background: #ffffff;
+  border: 1px solid #afcaac;
   border-radius: 30px;
-  color: #4A6346;
-  font-family: 'Satoshi';
+  color: #4a6346;
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   text-align: center;
   :hover {
-    background: #4A6346;
-    color: #FFFFFF;
+    background: #4a6346;
+    color: #ffffff;
     cursor: pointer;
   }
 `;
@@ -96,18 +99,30 @@ const ProfilePresentation = (user: IUser) => {
 
   return (
     <ProfilePresentationContainer>
-      <ModalSupport isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
-      <ProfilePicture src={process.env.PUBLIC_URL + user.profilePicture} alt="Head" />
+      <ModalSupport
+        isModalVisible={isSupportModalVisible}
+        setIsModalVisible={setIsSupportModalVisible}
+      />
+      <ProfilePicture src={user.profilePicture} alt="Head" />
       <Author>{user.name}</Author>
       <Description>{user.description}</Description>
       <Social>
         {/* <ProfileTag {...user} /> */}
-        <SocialButton><TwitterOutlined /></SocialButton>
-        <SocialButton><InstagramOutlined /></SocialButton>
+        <SocialButton>
+          <TwitterOutlined />
+        </SocialButton>
+        <SocialButton>
+          <InstagramOutlined />
+        </SocialButton>
         <SocialButton>{user.website}</SocialButton>
       </Social>
       <ButtonStatsContainer>
-        <Button onClick={() => setIsSupportModalVisible(true)} style={{ marginLeft: "10px" }}>Support author</Button>
+        <Button
+          onClick={() => setIsSupportModalVisible(true)}
+          style={{ marginLeft: "10px" }}
+        >
+          Support author
+        </Button>
         <Stats>348 times supported</Stats>
         <Stats>(5.4 ETH)</Stats>
       </ButtonStatsContainer>
