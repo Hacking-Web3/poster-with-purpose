@@ -2,20 +2,20 @@ import { IModalInformation } from '../types/types';
 import styled from 'styled-components';
 import StyledModal from './common/Modal';
 
-const ModalSupport = ({ poster, isModalVisible, setIsModalVisible }: IModalInformation) => {
+const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformation) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
   return (
     <StyledModal visible={isModalVisible} onCancel={handleCancel} footer={null}>
-      <h1>Support author</h1>
-      <p>Aprox. $1400</p>      
-      <p>Your balance $3 000 423</p>
-      <input></input>
+      <h1>Upload a photo</h1>
+      <div>
+        <input type="file" />
+      </div>
       <button>Upload</button>
     </StyledModal>
   );
 };
 
-export default ModalSupport;
+export default ModalUploadProof;

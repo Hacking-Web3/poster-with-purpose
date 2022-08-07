@@ -55,21 +55,6 @@ const Backer = styled.button`
   }
 `;
 
-const Username = styled.p`
-  font-size: 16px;
-  font-family: 'Satoshi';
-  font-style: normal;
-  font-weight: 500;
-  width: 100%;
-  height: 100%;
-`;
-
-const ProfilePicture = styled.img`
-  width: 20%;
-  height: auto;
-  object-fit: cover;
-`;
-
 const BackersList = ({ users }: IUsersList) => {
   let navigate = useNavigate();
   const [backersToPrint, setBackersToPrint] = useState(10);
