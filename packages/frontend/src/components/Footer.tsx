@@ -87,7 +87,7 @@ const Footer = () => {
         </FooterContainer>
         <FooterContainer>
           <FooterItem><BlackText>2022</BlackText></FooterItem>
-          <FooterItem><Image src="/logo.png" alt="logo" /></FooterItem>
+          <FooterItem><Image src="/logo.svg" alt="logo" /></FooterItem>
         </FooterContainer>
       </FooterContainer>
       <Policy>By uploading Artwork to Posters with purpose you agree to attribute your creation with creative commons 0 license</Policy >
