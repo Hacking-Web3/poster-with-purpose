@@ -42,7 +42,7 @@ const ProfileTag = (user: IUser) => {
 
   return (
     <Tag onClick={() => navigate("/profile/" + user.walletAdress)}>
-      <ProfilePicture src={user.profilePicture} />
+      <ProfilePicture src={process.env.PUBLIC_URL + user.profilePicture} />
       <Username>{user.walletAdress}</Username>
     </Tag>
   );

@@ -84,7 +84,7 @@ const CardPoster = (poster: IPosterCard) => {
     <PosterCardContainer>
       <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
       <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
-      <Image onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
+      <Image onClick={() => navigate("/poster/" + poster.id)} src={process.env.PUBLIC_URL + poster.image} alt="Head" />
       <Title><span style={{ fontWeight: "bold" }}>{poster.author}</span>, {poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonContainer>

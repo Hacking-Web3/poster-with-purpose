@@ -97,7 +97,7 @@ const ProfilePresentation = (user: IUser) => {
   return (
     <ProfilePresentationContainer>
       <ModalSupport isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
-      <ProfilePicture src={user.profilePicture} alt="Head" />
+      <ProfilePicture src={process.env.PUBLIC_URL + user.profilePicture} alt="Head" />
       <Author>{user.name}</Author>
       <Description>{user.description}</Description>
       <Social>

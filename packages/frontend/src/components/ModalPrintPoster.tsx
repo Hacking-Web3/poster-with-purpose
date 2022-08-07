@@ -80,7 +80,7 @@ const ModalPrintPoster = ({ poster, isModalVisible, setIsModalVisible }: IModalI
       title={'Print a poster'}
     >
       <Content>
-        <Image src={poster?.image} />
+        <Image src={process.env.PUBLIC_URL + poster?.image} />
         <Title><span style={{ fontWeight: "bold" }}>{poster?.author}</span>, {poster?.title}</Title>
         <Description>{poster?.description}</Description>
         <Button href={poster?.image} download={poster?.title}>Download</Button>
