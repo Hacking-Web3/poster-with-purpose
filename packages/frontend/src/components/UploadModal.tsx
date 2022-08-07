@@ -1,5 +1,6 @@
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Form, message, Modal, Switch, Upload, Input, Tag } from "antd";
+import { Button, Form, message, Switch, Upload, Input, Tag } from "antd";
+import Modal from "./common/Modal";
 import {
   RcFile,
   UploadChangeParam,
@@ -12,12 +13,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { addPopupVisible } from "../state/addPoster/atoms";
-
-const Header = styled.header`
-  font-size: 20px;
-  line-height: 26px;
-  color: #4a6346;
-`;
 
 const UploadingRules = styled.span`
   font-size: 11px;
@@ -107,15 +102,13 @@ const UploadModal = () => {
 
   return (
     <Modal
-      centered
-      visible={modalVisible}
-      onCancel={() => setModalVisibility(!modalVisible)}
-      maskStyle={{ backgroundColor: "#283127", opacity: 0.78 }}
-      footer={null}
-      width={350}
+      isModalVisible={modalVisible}
+      setIsModalVisible={setModalVisibility}
+      height={'70vh'}
+      width={'45vh'}
+      overflow={'scroll'}
+      title={"Upload a poster"}
     >
-      <Header>Upload a poster</Header>
-
       <Form
         form={form}
         layout="vertical"

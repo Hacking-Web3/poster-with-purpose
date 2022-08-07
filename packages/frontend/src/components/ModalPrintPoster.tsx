@@ -1,24 +1,94 @@
 import { IModalInformation } from '../types/types';
 import styled from 'styled-components';
-import StyledModal from './common/Modal';
+import Modal from './common/Modal';
+
+const Button = styled.a`
+  height: 100%;
+  width: 100%;
+  padding: 4% 2%;
+  background: #DEF3DA;
+  border-radius: 30px;
+  border: none;
+  color: #4A6346;
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  :hover {
+    background: #4A6346;
+    color: #FFFFFF;
+    cursor: pointer;
+  } 
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 95%;
+`;
+
+const Title = styled.h1`
+  color: black;
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+`;
+
+const Image = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+`;
+
+const Description = styled.p`
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #72748D;
+`;
+
+const ButtonDescription = styled.p`
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #83A380;
+`;
 
 const ModalPrintPoster = ({ poster, isModalVisible, setIsModalVisible }: IModalInformation) => {
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
 
   return (
-    <StyledModal visible={isModalVisible} onCancel={handleCancel} footer={null}>
-      <h1>Print a poster</h1>
-      <img src={poster?.image} />
-      <p>{poster?.author}</p>
-      <p>{poster?.title}</p>
-      <p>{poster?.description}</p>
-      <button>Download</button>
-      <p>to print at home or in you local print center any size you want</p>
-      <button>External print order</button>
-      <p>or you can order printing of the poster here online</p>
-    </StyledModal>
+    <Modal
+      isModalVisible={isModalVisible}
+      setIsModalVisible={setIsModalVisible}
+      height={'80vh'}
+      width={'50vh'}
+      overflow={'scroll'}
+      title={'Print a poster'}
+    >
+      <Content>
+        <Image src={poster?.image} />
+        <Title><span style={{ fontWeight: "bold" }}>{poster?.author}</span>, {poster?.title}</Title>
+        <Description>{poster?.description}</Description>
+        <Button href={poster?.image} download={poster?.title}>Download</Button>
+        <ButtonDescription>to print at home or in you local print center any size you want</ButtonDescription>
+        <Button href={""}>External print order</Button>
+        <ButtonDescription>or you can order printing of the poster here online</ButtonDescription>
+      </Content>
+    </Modal>
   );
 };
 
