@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { IUsersList } from "../types/types";
+import ProfileTag from "./common/ProfileTag";
 
 const BackersListContainer = styled.div`
   width: 80%;
@@ -78,10 +79,7 @@ const BackersList = ({ users }: IUsersList) => {
       <Title>Bakers:</Title>
       <BackersContainer>
         {users.slice(0, backersToPrint).map((user, index) => (
-          <Backer key={index} onClick={() => navigate("/user/" + user.walletAdress)}>
-            <ProfilePicture src={user.profilePicture} />
-            <Username>{user.walletAdress}</Username>
-          </Backer>
+          <ProfileTag key={index} {...user} />
         ))}
         {backersToPrint < users.length && (
           <Backer onClick={() => setBackersToPrint(backersToPrint + 10)}>
