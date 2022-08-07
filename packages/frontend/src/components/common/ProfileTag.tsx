@@ -7,16 +7,16 @@ const Tag = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid #AFCAAC;
+  border: 1px solid #afcaac;
   border-radius: 30px;
   background-color: transparent;
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 0.5% 1%;
-  color: #4A6346;
+  color: #4a6346;
   height: 100%;
   :hover {
-    background-color: #4A6346;
+    background-color: #4a6346;
     color: #f5f5f5;
     cursor: pointer;
   }
@@ -24,7 +24,7 @@ const Tag = styled.button`
 
 const Username = styled.p`
   font-size: 16px;
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   width: 100%;
@@ -42,7 +42,7 @@ const ProfileTag = (user: IUser) => {
 
   return (
     <Tag onClick={() => navigate("/profile/" + user.walletAdress)}>
-      <ProfilePicture src={process.env.PUBLIC_URL + user.profilePicture} />
+      <ProfilePicture src={user.profilePicture} />
       <Username>{user.walletAdress}</Username>
     </Tag>
   );

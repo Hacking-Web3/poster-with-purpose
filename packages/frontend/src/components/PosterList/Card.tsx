@@ -94,7 +94,7 @@ const CardPoster = (poster: IPosterCard) => {
       />
       <Image
         onClick={() => navigate("/poster/" + poster.id)}
-        src={process.env.PUBLIC_URL + poster.image}
+        src={poster.image}
         alt="Head"
       />
       <Title>{poster.title}</Title>

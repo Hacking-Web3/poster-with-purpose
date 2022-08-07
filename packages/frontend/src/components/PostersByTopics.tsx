@@ -16,7 +16,7 @@ const NewPosterContainer = styled.div`
   align-content: center;
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding-left: 50px;
   padding-right: 50px;
 `;
@@ -50,11 +50,11 @@ const CustomSlider = styled(Slider)`
     width: 80%;
     left: -20%;
   }
-  
+
   .ft-slick__dots--custom {
     height: 6px;
     width: 85px;
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
     margin-top: 20px;
     :hover {
       background-color: grey;
@@ -67,9 +67,9 @@ const CustomSlider = styled(Slider)`
   }
 
   .slick-dots .slick-active .ft-slick__dots--custom {
-    background-color: #B588C1 !important;
+    background-color: #b588c1 !important;
   }
-`
+`;
 
 const TopicTitle = styled.h1`
   width: 80%;
@@ -82,14 +82,14 @@ const TopicTitle = styled.h1`
 `;
 
 const PostersContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 50px;
-    padding: 0 5%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding: 0 5%;
 `;
 
 const Image = styled.img`
@@ -113,10 +113,7 @@ const PosterByTopics = () => {
     afterChange: (current: any) => {
       setTopic(postersByTopics[current].topic);
     },
-    customPaging: () => (
-      <div className="ft-slick__dots--custom">
-      </div>
-    )
+    customPaging: () => <div className="ft-slick__dots--custom"></div>,
   };
 
   return (
@@ -128,11 +125,16 @@ const PosterByTopics = () => {
             <div key={index}>
               <PostersContainer>
                 {posters.posters.slice(0, 3).map((poster, index) => (
-                  <Image key={index} onClick={() => navigate("/poster/" + poster.id)} src={process.env.PUBLIC_URL + poster.image} alt="Head" />
+                  <Image
+                    key={index}
+                    onClick={() => navigate("/poster/" + poster.id)}
+                    src={poster.image}
+                    alt="Head"
+                  />
                 ))}
               </PostersContainer>
             </div>
-          )
+          );
         })}
       </CustomSlider>
       <TopicTitle>{topic}</TopicTitle>

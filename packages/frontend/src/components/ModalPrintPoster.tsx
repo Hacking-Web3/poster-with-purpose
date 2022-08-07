@@ -1,16 +1,16 @@
-import { IModalInformation } from '../types/types';
-import styled from 'styled-components';
-import Modal from './common/Modal';
+import { IModalInformation } from "../types/types";
+import styled from "styled-components";
+import Modal from "./common/Modal";
 
 const Button = styled.a`
   height: 100%;
   width: 100%;
   padding: 4% 2%;
-  background: #DEF3DA;
+  background: #def3da;
   border-radius: 30px;
   border: none;
-  color: #4A6346;
-  font-family: 'Satoshi';
+  color: #4a6346;
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -19,10 +19,10 @@ const Button = styled.a`
   margin-right: 10px;
   margin-bottom: 10px;
   :hover {
-    background: #4A6346;
-    color: #FFFFFF;
+    background: #4a6346;
+    color: #ffffff;
     cursor: pointer;
-  } 
+  }
 `;
 
 const Content = styled.div`
@@ -35,7 +35,7 @@ const Content = styled.div`
 
 const Title = styled.h1`
   color: black;
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -49,47 +49,60 @@ const Image = styled.img`
 `;
 
 const Description = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 13px;
-  color: #72748D;
+  color: #72748d;
 `;
 
 const ButtonDescription = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 15px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #83A380;
+  color: #83a380;
 `;
 
-const ModalPrintPoster = ({ poster, isModalVisible, setIsModalVisible }: IModalInformation) => {
-
+const ModalPrintPoster = ({
+  poster,
+  isModalVisible,
+  setIsModalVisible,
+}: IModalInformation) => {
   return (
     <Modal
       isModalVisible={isModalVisible}
       setIsModalVisible={setIsModalVisible}
-      height={'80vh'}
-      width={'50vh'}
-      overflow={'scroll'}
-      title={'Print a poster'}
+      height={"80vh"}
+      width={"50vh"}
+      overflow={"scroll"}
+      title={"Print a poster"}
     >
       <Content>
-        <Image src={process.env.PUBLIC_URL + poster?.image} />
-        <Title><span style={{ fontWeight: "bold" }}>{poster?.author}</span>, {poster?.title}</Title>
+        <Image src={poster?.image} />
+        <Title>
+          <span style={{ fontWeight: "bold" }}>{poster?.author}</span>,{" "}
+          {poster?.title}
+        </Title>
         <Description>{poster?.description}</Description>
-        <Button href={poster?.image} download={poster?.title}>Download</Button>
-        <ButtonDescription>to print at home or in you local print center any size you want</ButtonDescription>
+        <Button href={poster?.image} download={poster?.title}>
+          Download
+        </Button>
+        <ButtonDescription>
+          to print at home or in you local print center any size you want
+        </ButtonDescription>
         <Button href={""}>External print order</Button>
-        <ButtonDescription>or you can order printing of the poster here online</ButtonDescription>
+        <ButtonDescription>
+          or you can order printing of the poster here online
+        </ButtonDescription>
       </Content>
     </Modal>
   );
 };
 
 export default ModalPrintPoster;
+

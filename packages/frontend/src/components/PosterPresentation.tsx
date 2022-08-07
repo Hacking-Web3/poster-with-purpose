@@ -106,7 +106,7 @@ const PosterPresentation = (poster: IPosterCard) => {
         setIsModalVisible={setIsSupportModalVisible}
       />
 
-      <Image src={process.env.PUBLIC_URL + poster.image} alt="Head" />
+      <Image src={poster.image} alt="Head" />
       <Title>{poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonStatsContainer>
