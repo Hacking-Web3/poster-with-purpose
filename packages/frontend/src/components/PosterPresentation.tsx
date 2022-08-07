@@ -97,7 +97,7 @@ const PosterPresentation = (poster: IPosterCard) => {
       <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
       <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
 
-      <Image src={poster.image} alt="Head" />
+      <Image src={process.env.PUBLIC_URL + poster.image} alt="Head" />
       <Author>{poster.author}</Author>
       <Title>{poster.title}</Title>
       <Description>{poster.description}</Description>

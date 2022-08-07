@@ -19,7 +19,7 @@ const routes = [
       { path: 'poster/:id', element: <Poster /> },
       { path: 'profile/:id', element: <Profile />},
       { path: '404', element: <Error404 /> },
-      { path: '*', element: <Navigate to="/404" /> }
+      { path: '*', element: <Main /> }
     ]
   }
 ];

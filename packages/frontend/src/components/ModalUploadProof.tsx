@@ -104,7 +104,7 @@ const ModalUploadProof = ({ isModalVisible, setIsModalVisible }: IModalInformati
             style={{ width: 284 }}
           >
             {imageUrl ? (
-              <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+              <img src={process.env.PUBLIC_URL + imageUrl} alt="avatar" style={{ width: "100%" }} />
             ) : (
               uploadButton
             )}

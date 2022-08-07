@@ -27,7 +27,7 @@ const Card = (poster: IPosterCard) => {
 
   return (
     <PosterCardContainer>
-      <Image onClick={() => navigate("/poster/" + poster.id)} src={poster.image} alt="Head" />
+      <Image onClick={() => navigate("/poster/" + poster.id)} src={process.env.PUBLIC_URL + poster.image} alt="Head" />
       {user && <ProfileTag {...user} />}
     </PosterCardContainer>
   );
