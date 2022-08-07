@@ -184,23 +184,23 @@ const UploadModal = () => {
         initialValues={{ fundsRecipient: address }}
       >
         <Form.Item name="imageURI">
-          <Upload
-            name="avatar"
-            listType="picture-card"
-            className="poster-uploader"
-            showUploadList={false}
-            // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-            customRequest={customReq}
-            beforeUpload={beforeUpload}
-            onChange={handleChange}
-            style={{ width: 284 }}
-          >
-            {imageUrl ? (
-              <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-            ) : (
-              uploadButton
-            )}
-          </Upload>
+          {imageUrl ? (
+            <img src={imageUrl} alt="poster" style={{ width: "100%" }} />
+          ) : (
+            <Upload
+              name="avatar"
+              listType="picture-card"
+              className="poster-uploader"
+              showUploadList={false}
+              // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              customRequest={customReq}
+              beforeUpload={beforeUpload}
+              onChange={handleChange}
+              style={{ width: "100%", height: "100%" }}
+            >
+                {uploadButton}
+            </Upload>
+          )}
         </Form.Item>
         <Form.Item label="I'm a creator" name="isCreator">
           <Switch
@@ -247,8 +247,8 @@ const UploadModal = () => {
           ))}
         </Form.Item>
         <UploadingRules>
-          By uploading Artwork to Posters  with purpose you agree to attribute
-          your creation with creative commons  0 license
+          By uploading Artwork to Posters with purpose you agree to attribute
+          your creation with creative commons 0 license
         </UploadingRules>
 
         <Form.Item>
