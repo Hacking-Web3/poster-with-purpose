@@ -12,10 +12,10 @@ const ModalPrintPoster = ({ poster, isModalVisible, setIsModalVisible }: IModalI
   return (
     <StyledModal visible={isModalVisible} onCancel={handleCancel} footer={null}>
       <h1>Print a poster</h1>
-      <img src={poster.image} />
-      <p>{poster.author}</p>
-      <p>{poster.title}</p>
-      <p>{poster.description}</p>
+      <img src={poster?.image} />
+      <p>{poster?.author}</p>
+      <p>{poster?.title}</p>
+      <p>{poster?.description}</p>
       <button>Download</button>
       <p>to print at home or in you local print center any size you want</p>
       <button>External print order</button>
