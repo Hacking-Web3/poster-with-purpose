@@ -25,6 +25,7 @@ export function writePosterInfo(
   description: string,
   creator: string,
   unitsPrinted: number,
+  tags: string[],
   signature: string
 ) {
   const db = getDatabase();
@@ -37,5 +38,6 @@ export function writePosterInfo(
     creator,
     unitsPrinted,
     signature,
+    tags,
   });
 }

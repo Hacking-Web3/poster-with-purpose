@@ -7,12 +7,12 @@ import ModalSupport from "../ModalSupport";
 import { useState } from "react";
 
 const PosterCardContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 50px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 50px;
 `;
 
 const Image = styled.img`
@@ -47,16 +47,30 @@ const Card = (poster: IPosterCard) => {
   const [isDownloadModalVisible, setIsDownloadModalVisible] = useState(false);
   const [isSupportModalVisible, setIsSupportModalVisible] = useState(false);
 
+  // <Author>{poster.author}</Author>
   return (
     <PosterCardContainer>
-      <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
-      <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
-      <Image onClick={() => navigate("/poster/" + poster.id)} src={process.env.PUBLIC_URL + poster.image} alt="Head" />
-      <Author>{poster.author}</Author>
+      <ModalPrintPoster
+        poster={poster}
+        isModalVisible={isDownloadModalVisible}
+        setIsModalVisible={setIsDownloadModalVisible}
+      />
+      <ModalSupport
+        poster={poster}
+        isModalVisible={isSupportModalVisible}
+        setIsModalVisible={setIsSupportModalVisible}
+      />
+      <Image
+        onClick={() => navigate("/poster/" + poster.id)}
+        src={process.env.PUBLIC_URL + poster.image}
+        alt="Head"
+      />
       <TimeStamp>A day ago</TimeStamp>
       <ButtonContainer>
-        <Button onClick={() => setIsDownloadModalVisible(true)} >Print</Button>
-        <Button onClick={() => setIsSupportModalVisible(true)} >Support author</Button>
+        <Button onClick={() => setIsDownloadModalVisible(true)}>Print</Button>
+        <Button onClick={() => setIsSupportModalVisible(true)}>
+          Support author
+        </Button>
       </ButtonContainer>
     </PosterCardContainer>
   );

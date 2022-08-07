@@ -12,12 +12,12 @@ const BackersListContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
   align-content: center;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   margin-top: 50px;
 `;
 
 const Title = styled.h1`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 23px;
@@ -39,17 +39,17 @@ const Backer = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid #AFCAAC;
+  border: 1px solid #afcaac;
   border-radius: 30px;
   background-color: transparent;
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 0.5% 1%;
-  color: #4A6346;
+  color: #4a6346;
   width: 10%;
   height: 100%;
   :hover {
-    background-color: #4A6346;
+    background-color: #4a6346;
     color: #f5f5f5;
     cursor: pointer;
   }
@@ -61,7 +61,7 @@ const BackersList = ({ users }: IUsersList) => {
 
   return (
     <BackersListContainer>
-      <Title>Bakers:</Title>
+      <Title>Backers:</Title>
       <BackersContainer>
         {users.slice(0, backersToPrint).map((user, index) => (
           <ProfileTag key={index} {...user} />

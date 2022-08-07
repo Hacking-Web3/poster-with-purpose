@@ -6,11 +6,11 @@ import ModalSupport from "./ModalSupport";
 import { useState } from "react";
 
 const PosterPresentationContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
 `;
 
 const Image = styled.img`
@@ -19,7 +19,7 @@ const Image = styled.img`
 `;
 
 const Author = styled.h1`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 35px;
@@ -28,7 +28,7 @@ const Author = styled.h1`
 `;
 
 const Title = styled.h1`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
@@ -36,11 +36,11 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  color: #72748D
+  color: #72748d;
 `;
 
 const ButtonStatsContainer = styled.div`
@@ -61,30 +61,30 @@ const ButtonStatsDivider = styled.div`
 
 const Button = styled.button`
   padding: 4% 5%;
-  background: #DEF3DA;
+  background: #def3da;
   border-radius: 30px;
   border: none;
-  color: #4A6346;
-  font-family: 'Satoshi';
+  color: #4a6346;
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   text-align: center;
   :hover {
-    background: #4A6346;
-    color: #FFFFFF;
+    background: #4a6346;
+    color: #ffffff;
     cursor: pointer;
   }
 `;
 
 const Stats = styled.p`
-  font-family: 'Satoshi';
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   text-align: center;
   text-transform: uppercase;
-  color: #72748D
+  color: #72748d;
 `;
 
 const PosterPresentation = (poster: IPosterCard) => {
@@ -92,22 +92,35 @@ const PosterPresentation = (poster: IPosterCard) => {
   const [isDownloadModalVisible, setIsDownloadModalVisible] = useState(false);
   const [isSupportModalVisible, setIsSupportModalVisible] = useState(false);
 
+  // <Author>{poster.author}</Author>
   return (
     <PosterPresentationContainer>
-      <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
-      <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
+      <ModalPrintPoster
+        poster={poster}
+        isModalVisible={isDownloadModalVisible}
+        setIsModalVisible={setIsDownloadModalVisible}
+      />
+      <ModalSupport
+        poster={poster}
+        isModalVisible={isSupportModalVisible}
+        setIsModalVisible={setIsSupportModalVisible}
+      />
 
       <Image src={process.env.PUBLIC_URL + poster.image} alt="Head" />
-      <Author>{poster.author}</Author>
       <Title>{poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonStatsContainer>
         <ButtonStatsDivider>
-          <Button onClick={() => setIsDownloadModalVisible(true)} >Print</Button>
+          <Button onClick={() => setIsDownloadModalVisible(true)}>Print</Button>
           <Stats>3987 u. total printed</Stats>
         </ButtonStatsDivider>
         <ButtonStatsDivider>
-          <Button onClick={() => setIsSupportModalVisible(true)} style={{ marginLeft: "10px" }}>Support author</Button>
+          <Button
+            onClick={() => setIsSupportModalVisible(true)}
+            style={{ marginLeft: "10px" }}
+          >
+            Support author
+          </Button>
           <Stats>348 times supported</Stats>
           <Stats>(5.4 ETH)</Stats>
         </ButtonStatsDivider>
