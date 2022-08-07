@@ -14,7 +14,6 @@ const Tag = styled.button`
   margin-bottom: 10px;
   padding: 0.5% 1%;
   color: #4A6346;
-  width: 10%;
   height: 100%;
   :hover {
     background-color: #4A6346;

@@ -1,5 +1,3 @@
-import { Modal } from 'antd';
-import React, { useState } from 'react';
 import { IModalInformation } from '../types/types';
 import styled from 'styled-components';
 import StyledModal from './common/Modal';

@@ -30,7 +30,7 @@ const Poster = () => {
         poster &&
         <PresentationContainer>
           <PosterPresentation {...poster} />
-          <ProofOfUse title={"Proof of use (Todo)"} posters={Posters} />
+          <ProofOfUse title={"Proof of use:"} posters={Posters} />
           <TagsList title={"Topics:"} titlePosition={"left"} tags={poster.tags} />
           <BackersList users={Users} />
         </PresentationContainer>
