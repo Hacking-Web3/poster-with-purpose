@@ -90,7 +90,7 @@ We want to create a platform that would be used by creatives to express their vi
 -----------Discord/Telegram-----------  
 *__Alina__* : Alina Loseva#0890 / @alinaloseva  
 *__Igor__* : Igor Line#5073 / @igorline  
-*__Hugo__* : SpookyWeasel#2717 / @HugoLachkar  
+*__Hugo__* : HugoLachkar#2717 / @HugoLachkar  
 *_Leon_* : Leon DUCASSE#3082 / @lndcss
 
 ---
