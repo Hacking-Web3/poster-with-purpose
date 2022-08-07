@@ -112,11 +112,11 @@ As said before you can upload a picture of you using the poster.
 
 ### __Consulting a profile__
 
-You can consult the profile of a person to see all their different creations or the posters that they printed or supported.
+You can consult the profile of a user to see all their different creations or the posters that they printed or supported.
 
 ![ page](./screenshots/profile.png)
 
 ---
 ---
 
-## To see more of the mockups or screenshots of the website please consult the [screenshots](https://github.com/Hacking-Web3/poster-with-purpose/tree/main/screenshots) folder :)
+## To see more of the mockups or screenshots of the website please consult the [screenshots](https://github.com/Hacking-Web3/poster-with-purpose/tree/main/screenshots) folder or you can directly go to our website [posterwithpurpose.com](https://posterwithpurpose.com):)
