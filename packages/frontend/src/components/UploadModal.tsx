@@ -1,4 +1,5 @@
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { ref, getDatabase } from "firebase/database";
 import { Button, Form, message, Switch, Upload, Input, Tag } from "antd";
 import Modal from "./common/Modal";
 import {
@@ -16,6 +17,10 @@ import { addPopupVisible } from "../state/addPoster/atoms";
 import { DAO_ADDRESS } from "contracts/constants";
 import { getSignatureDetails } from "../utils/getSignatureDetails";
 import { writePosterInfo } from "../services/firebase";
+import { useListVals } from "react-firebase-hooks/database";
+import firebaseApp from "../services/firebase";
+
+const database = getDatabase(firebaseApp);
 
 const UploadingRules = styled.span`
   font-size: 11px;
@@ -47,9 +52,6 @@ const beforeUpload = async (file: RcFile) => {
   return isJpgOrPng && isLt40M;
 };
 
-// TODO: Fetch tags from firebase
-const tagsData = ["Movies", "Books", "Music", "Sports"];
-
 const UploadModal = () => {
   const [form] = Form.useForm();
   const [title, setTitle] = useState("");
@@ -62,7 +64,7 @@ const UploadModal = () => {
   const [isCreator, setIsCreator] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
   const [modalVisible, setModalVisibility] = useAtom(addPopupVisible);
-  const [selectedTags, setSelectedTags] = useState<string[]>(["Books"]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const { address } = useAccount();
   const { chain } = useNetwork();
   const { domain, types } = getSignatureDetails(chain?.id || 1);
@@ -84,6 +86,11 @@ const UploadModal = () => {
     value,
   });
 
+  const [tagsData, tagsLoading, tagsError] = useListVals<string>(
+    ref(database, "tags")
+  );
+  const tags: string[] = tagsData?.map((tag) => tag.toString()) || [];
+
   useEffect(() => {
     if (sig && !published) {
       setPublished(true);
@@ -93,8 +100,10 @@ const UploadModal = () => {
         description,
         address || "",
         0,
+        selectedTags,
         sig
       );
+      setModalVisibility(false);
     }
   }, [sig]);
 
@@ -134,9 +143,7 @@ const UploadModal = () => {
       token: process.env.REACT_APP_NFT_STORAGE_TOKEN!,
     });
     client.storeBlob(some.file).then((cid: string) => {
-      some.file.cid = cid;
       setCID(cid);
-      some.onSuccess(cid);
     });
   };
 
@@ -198,7 +205,7 @@ const UploadModal = () => {
               onChange={handleChange}
               style={{ width: "100%", height: "100%" }}
             >
-                {uploadButton}
+              {uploadButton}
             </Upload>
           )}
         </Form.Item>
@@ -236,7 +243,7 @@ const UploadModal = () => {
           <Input placeholder="2022" />
         </Form.Item>
         <Form.Item label="Choose topics" name="tags" className="tags">
-          {tagsData.map((tag) => (
+          {tags.map((tag) => (
             <Tag.CheckableTag
               key={tag}
               checked={selectedTags.indexOf(tag) > -1}

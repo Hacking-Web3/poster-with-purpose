@@ -7,14 +7,14 @@ import ModalSupport from "../ModalSupport";
 import { useState } from "react";
 
 const PosterCardContainer = styled.div`
-    width: 25%;
-    margin-right: 5px;
-    margin-left: 5px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 25px;
+  width: 25%;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 25px;
 `;
 
 const Image = styled.img`
@@ -48,19 +48,19 @@ const Button = styled.button`
   height: 100%;
   width: auto;
   padding: 2% 5%;
-  background: #DEF3DA;
+  background: #def3da;
   border-radius: 30px;
   border: none;
-  color: #4A6346;
-  font-family: 'Satoshi';
+  color: #4a6346;
+  font-family: "Satoshi";
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
   text-align: center;
   :hover {
-    background: #4A6346;
-    color: #FFFFFF;
+    background: #4a6346;
+    color: #ffffff;
     cursor: pointer;
   }
 `;
@@ -82,18 +82,37 @@ const CardPoster = (poster: IPosterCard) => {
 
   return (
     <PosterCardContainer>
-      <ModalPrintPoster poster={poster} isModalVisible={isDownloadModalVisible} setIsModalVisible={setIsDownloadModalVisible} />
-      <ModalSupport poster={poster} isModalVisible={isSupportModalVisible} setIsModalVisible={setIsSupportModalVisible} />
-      <Image onClick={() => navigate("/poster/" + poster.id)} src={process.env.PUBLIC_URL + poster.image} alt="Head" />
-      <Title><span style={{ fontWeight: "bold" }}>{poster.author}</span>, {poster.title}</Title>
+      <ModalPrintPoster
+        poster={poster}
+        isModalVisible={isDownloadModalVisible}
+        setIsModalVisible={setIsDownloadModalVisible}
+      />
+      <ModalSupport
+        poster={poster}
+        isModalVisible={isSupportModalVisible}
+        setIsModalVisible={setIsSupportModalVisible}
+      />
+      <Image
+        onClick={() => navigate("/poster/" + poster.id)}
+        src={process.env.PUBLIC_URL + poster.image}
+        alt="Head"
+      />
+      <Title>{poster.title}</Title>
       <Description>{poster.description}</Description>
       <ButtonContainer>
-        <Button onClick={() => setIsDownloadModalVisible(true)} >Print</Button>
-        <Button onClick={() => setIsSupportModalVisible(true)} style={{ marginLeft: "10px" }}>Support author</Button>
+        <Button onClick={() => setIsDownloadModalVisible(true)}>Print</Button>
+        <Button
+          onClick={() => setIsSupportModalVisible(true)}
+          style={{ marginLeft: "10px" }}
+        >
+          Support author
+        </Button>
       </ButtonContainer>
       <TagsContainer>
         {poster.tags.map((tag, index) => (
-          <Tag onClick={() => navigate("/topic/" + tag)} key={index}>{tag}</Tag>
+          <Tag onClick={() => navigate("/topic/" + tag)} key={index}>
+            {tag}
+          </Tag>
         ))}
       </TagsContainer>
     </PosterCardContainer>
