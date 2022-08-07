@@ -46,8 +46,8 @@ const Header = () => {
   return (
     <StyledHeader>
       <Logo onClick={() => navigate("/")}>
-        <img src="/logo.png" alt="Logo" />
-        <img src="/brandName.png" alt="BrandName" />
+        <img src="/logo.svg" alt="Logo" />
+        <img src="/brandName.svg" alt="BrandName" />
       </Logo>
       <MenuContainer>
         {address && (
