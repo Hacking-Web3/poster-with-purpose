@@ -9,12 +9,13 @@ import {
 } from "antd/lib/upload";
 import { useAtom } from "jotai";
 import { NFTStorage } from "nft.storage";
-import { ChangeEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAccount, useNetwork, useSignTypedData } from "wagmi";
 import { addPopupVisible } from "../state/addPoster/atoms";
-import { DAO_ADDRESS, POSTERS_WITH_PURPOSE } from "contracts/constants";
+import { DAO_ADDRESS } from "contracts/constants";
 import { getSignatureDetails } from "../utils/getSignatureDetails";
+import { writePosterInfo } from "../services/firebase";
 
 const UploadingRules = styled.span`
   font-size: 11px;
@@ -22,38 +23,6 @@ const UploadingRules = styled.span`
 
   color: #83a380;
 `;
-
-const domain = {
-  name: "Ether Mail",
-  version: "1",
-  chainId: 4,
-  verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
-};
-
-// The named list of all type definitions
-const types = {
-  Person: [
-    { name: "name", type: "string" },
-    { name: "wallet", type: "address" },
-  ],
-  Mail: [
-    { name: "from", type: "Person" },
-    { name: "to", type: "Person" },
-    { name: "contents", type: "string" },
-  ],
-};
-
-const value = {
-  from: {
-    name: "Cow",
-    wallet: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826",
-  },
-  to: {
-    name: "Bob",
-    wallet: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB",
-  },
-  contents: "Hello, Bob!",
-};
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
@@ -97,6 +66,7 @@ const UploadModal = () => {
   const { address } = useAccount();
   const { chain } = useNetwork();
   const { domain, types } = getSignatureDetails(chain?.id || 1);
+  const [published, setPublished] = useState(false);
   const value = {
     creator: address,
     name: `${author}. ${title}. ${year}, ${country}`,
@@ -104,15 +74,29 @@ const UploadModal = () => {
     description,
     imageURI: `ipfs://${cid}`,
   };
-  const { data, isSuccess, signTypedData } = useSignTypedData({
+  const {
+    data: sig,
+    isSuccess,
+    signTypedData,
+  } = useSignTypedData({
     domain,
     types,
     value,
   });
 
-  if (isSuccess && data) {
-    // TODO: Push to firebase
-  }
+  useEffect(() => {
+    if (sig && !published) {
+      setPublished(true);
+      writePosterInfo(
+        cid,
+        `${author}. ${title}. ${year}, ${country}`,
+        description,
+        address || "",
+        0,
+        sig
+      );
+    }
+  }, [sig]);
 
   const handleTagsChange = (tag: string, checked: boolean) => {
     const nextSelectedTags = checked
@@ -163,6 +147,7 @@ const UploadModal = () => {
   };
 
   const handleFieldsChange = (changedFields: any, allFields: any) => {
+    setPublished(false);
     for (const field of changedFields) {
       if (field.name.toString() === "title") {
         setTitle(field.value);
@@ -186,9 +171,9 @@ const UploadModal = () => {
     <Modal
       isModalVisible={modalVisible}
       setIsModalVisible={setModalVisibility}
-      height={'70vh'}
-      width={'45vh'}
-      overflow={'scroll'}
+      height={"70vh"}
+      width={"45vh"}
+      overflow={"scroll"}
       title={"Upload a poster"}
     >
       <Form
