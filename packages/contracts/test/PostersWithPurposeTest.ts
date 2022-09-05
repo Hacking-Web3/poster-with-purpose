@@ -9,6 +9,10 @@ describe("PostersWithPurpose test", function () {
   let postersWithPurpose: Contract;
   let NFTCreatorAddress: string = "0x073e06e3a316C59c53b905Bf2bF8112475FfcA08";
 
+  let image1 = "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/";
+  let image2 = "https://pbs.twimg.com/profile_images/1541920820204797952/RaMNiqHx_400x400.jpg";
+  let image3 = "https://picsum.photos/id/237/536/354";
+
   async function forkingAtBlock(blockNumber: number) {
     await network.provider.request({
       method: "hardhat_reset",
@@ -25,13 +29,38 @@ describe("PostersWithPurpose test", function () {
     });
   }
 
+  async function getSignature(userA: SignerWithAddress, userB: SignerWithAddress, domain: any, imageURI: string) {
+    const signature = await userA._signTypedData(
+      domain,
+      {
+        CreateEdition: [
+          { name: "creator", type: "address" },
+          { name: "name", type: "string" },
+          { name: "fundsRecipient", type: "address" },
+          { name: "description", type: "string" },
+          { name: "imageURI", type: "string" },
+        ],
+      },
+      {
+        creator: userA.address,
+        name: "collection's name",
+        fundsRecipient: userB.address,
+        description: "collection's description",
+        imageURI: imageURI,
+      }
+    );
+    return signature;
+  }
+
   describe("Deployment", function () {
     it("Should deploy the contract and set zora nft creator address", async function () {
       let [userA, userB] = await ethers.getSigners();
       const PostersWithPurpose = await ethers.getContractFactory(
         "PostersWithPurpose"
       );
+
       await forkingAtBlock(14881640);
+      
       postersWithPurpose = await PostersWithPurpose.deploy(
         NFTCreatorAddress,
         0,
@@ -74,12 +103,10 @@ describe("PostersWithPurpose test", function () {
       await createTx.wait();
 
       return contractAddress;
-    } 
+    }
 
     it("allows creating edition via signature", async function () {
       let [userA, userB] = await ethers.getSigners();
-      let image1 = "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/";
-      let image2 = "https://pbs.twimg.com/profile_images/1541920820204797952/RaMNiqHx_400x400.jpg";
 
       let postersWithPurposeDomain = {
         name: "PostersWithPurpose",
@@ -88,35 +115,7 @@ describe("PostersWithPurpose test", function () {
         verifyingContract: postersWithPurpose.address,
       };
 
-      let saleConfig = {
-        publicSalePrice: ethers.utils.parseEther("1"),
-        maxSalePurchasePerAddress: 1,
-        publicSaleStart: 10,
-        publicSaleEnd: 20,
-        presaleStart: 5,
-        presaleEnd: 6,
-        presaleMerkleRoot: ethers.utils.hexlify(ethers.utils.randomBytes(32)),
-      };
-
-      const signature1 = await userA._signTypedData(
-        postersWithPurposeDomain,
-        {
-          CreateEdition: [
-            { name: "creator", type: "address" },
-            { name: "name", type: "string" },
-            { name: "fundsRecipient", type: "address" },
-            { name: "description", type: "string" },
-            { name: "imageURI", type: "string" },
-          ],
-        },
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI: image1,
-        }
-      );
+      const signature1 = await getSignature(userA, userB, postersWithPurposeDomain, image1);
 
       let contractAddress = await createEdition(userA, userB, signature1, image1);
 
@@ -130,26 +129,8 @@ describe("PostersWithPurpose test", function () {
       expect(await contractDeployed.name()).to.equal("collection's name");
       expect(await contractDeployed.symbol()).to.equal("PWP0");
 
-      const signature2 = await userA._signTypedData(
-        postersWithPurposeDomain,
-        {
-          CreateEdition: [
-            { name: "creator", type: "address" },
-            { name: "name", type: "string" },
-            { name: "fundsRecipient", type: "address" },
-            { name: "description", type: "string" },
-            { name: "imageURI", type: "string" },
-          ],
-        },
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI: image2,
-        }
-      );
-      
+      const signature2 = await getSignature(userA, userB, postersWithPurposeDomain, image2);
+
       let contractAddress2 = await createEdition(userA, userB, signature2, image2);
 
       let contractDeployed2 = new Contract(
@@ -172,36 +153,7 @@ describe("PostersWithPurpose test", function () {
         verifyingContract: postersWithPurpose.address,
       };
 
-      let saleConfig = {
-        publicSalePrice: ethers.utils.parseEther("1"),
-        maxSalePurchasePerAddress: 1,
-        publicSaleStart: 10,
-        publicSaleEnd: 20,
-        presaleStart: 5,
-        presaleEnd: 6,
-        presaleMerkleRoot: ethers.utils.hexlify(ethers.utils.randomBytes(32)),
-      };
-
-      const signature = await userA._signTypedData(
-        postersWithPurposeDomain,
-        {
-          CreateEdition: [
-            { name: "creator", type: "address" },
-            { name: "name", type: "string" },
-            { name: "fundsRecipient", type: "address" },
-            { name: "description", type: "string" },
-            { name: "imageURI", type: "string" },
-          ],
-        },
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
-        }
-      );
+      const signature = await getSignature(userA, userB, postersWithPurposeDomain, image1);
 
       let prevBalanceA = await userA.getBalance();
       let prevBalanceB = await userB.getBalance();
@@ -212,8 +164,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: image1,
         },
         signature,
         { value: ethers.utils.parseEther("0.001") }
@@ -225,8 +176,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: image1,
         },
         signature,
         { value: ethers.utils.parseEther("0.001") }
@@ -256,8 +206,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: image1,
         },
         signature,
         { value: ethers.utils.parseEther("0.001") }
@@ -277,8 +226,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://www.unocero.com/noticias/rickroll-lleva-a-record-en-youtube/",
+          imageURI: image1,
         },
         signature,
         { value: 0 }
@@ -287,7 +235,7 @@ describe("PostersWithPurpose test", function () {
 
     it("Shouldn't allowed the purchase", async function () {
       let [userA, userB] = await ethers.getSigners();
-      
+
       let postersWithPurposeDomain = {
         name: "PostersWithPurpose",
         version: "1.0",
@@ -295,26 +243,7 @@ describe("PostersWithPurpose test", function () {
         verifyingContract: postersWithPurpose.address,
       };
 
-      const signature = await userA._signTypedData(
-        postersWithPurposeDomain,
-        {
-          CreateEdition: [
-            { name: "creator", type: "address" },
-            { name: "name", type: "string" },
-            { name: "fundsRecipient", type: "address" },
-            { name: "description", type: "string" },
-            { name: "imageURI", type: "string" },
-          ],
-        },
-        {
-          creator: userA.address,
-          name: "collection's name",
-          fundsRecipient: userB.address,
-          description: "collection's description",
-          imageURI:
-            "https://picsum.photos/id/237/536/354",
-        }
-      );
+      const signature = await getSignature(userA, userB, postersWithPurposeDomain, image3);
 
       let contractAddress = await postersWithPurpose.callStatic.createEdition(
         {
@@ -322,8 +251,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://picsum.photos/id/237/536/354",
+          imageURI: image3,
         },
         signature
       );
@@ -334,8 +262,7 @@ describe("PostersWithPurpose test", function () {
           name: "collection's name",
           fundsRecipient: userB.address,
           description: "collection's description",
-          imageURI:
-            "https://picsum.photos/id/237/536/354",
+          imageURI: image3,
         },
         signature
       );
